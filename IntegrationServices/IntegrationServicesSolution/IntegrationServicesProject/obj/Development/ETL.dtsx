@@ -1,0 +1,1816 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/22/2016 8:34:09 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SERVER2012"
+  DTS:CreatorName="SERVER2012\User"
+  DTS:Description="DTS Wizard-generated package"
+  DTS:DTSID="{FE6AB6E6-8318-44A0-A250-85E2130FDA03}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2150.2"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="ETL"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{6A7F0690-F063-4F44-AB80-636214084677}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D45EC97F-292B-4214-B86C-E6F9545B59BF}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=MDE_DWO_WS1617;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F6D248C8-E862-452F-BED6-AF7BAB04179B}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=C:\Users\User\FHMaster\DW01IL\DW01ILV\ue\dw\fhhnotes.mdb;OLE DB SERVICES=0;Provider=Microsoft.ACE.OLEDB.12.0;Persist Security Info=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Concistency Exam"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{EBFBAF10-8940-45D8-A413-41E958CD5F5C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Concistency Exam"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D45EC97F-292B-4214-B86C-E6F9545B59BF}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[exam]&#xA;WHERE [note] &lt; 1&#xA;AND [note] &gt; 5" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Drop old Data"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F7FA85B2-69F2-4034-B8D0-C7F75E971B51}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Drop old Data"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D45EC97F-292B-4214-B86C-E6F9545B59BF}"
+          SQLTask:SqlStatementSource="GO&#xA;DELETE FROM [dbo].[exam]&#xA;DELETE FROM [dbo].[lehrer_prod]&#xA;DELETE FROM [dbo].[Student_Group]&#xA;DELETE FROM [dbo].[teacher_group]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{163592DE-E9C1-41A3-B1C9-106A689BD7F6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Data\Destination - exam"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - exam"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[exam]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data\Destination - exam.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data\Destination - exam.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].Columns[student_Code]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="student_Code"
+                      externalMetadataColumnId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[student_Code]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[student_Code]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].Columns[lecture_Code]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="lecture_Code"
+                      externalMetadataColumnId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[lecture_Code]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[lecture_Code]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].Columns[sem]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="sem"
+                      externalMetadataColumnId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[sem]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[sem]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].Columns[semnr]"
+                      cachedDataType="i2"
+                      cachedName="semnr"
+                      externalMetadataColumnId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[semnr]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[semnr]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].Columns[probation]"
+                      cachedDataType="i2"
+                      cachedName="probation"
+                      externalMetadataColumnId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[probation]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[probation]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].Columns[teacher_Code]"
+                      cachedDataType="i4"
+                      cachedName="teacher_Code"
+                      externalMetadataColumnId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[teacher_Code]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[teacher_Code]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].Columns[note]"
+                      cachedDataType="i2"
+                      cachedName="note"
+                      externalMetadataColumnId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[note]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[note]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].Columns[lecture_group]"
+                      cachedDataType="i4"
+                      cachedName="lecture_group"
+                      externalMetadataColumnId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[lecture_group]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[lecture_group]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].Columns[stud_s]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="stud_s"
+                      externalMetadataColumnId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[stud_s]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[stud_s]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[student_Code]"
+                      dataType="wstr"
+                      length="50"
+                      name="student_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[lecture_Code]"
+                      dataType="wstr"
+                      length="20"
+                      name="lecture_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[sem]"
+                      dataType="wstr"
+                      length="10"
+                      name="sem" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[semnr]"
+                      dataType="i2"
+                      name="semnr" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[probation]"
+                      dataType="i2"
+                      name="probation" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[teacher_Code]"
+                      dataType="i4"
+                      name="teacher_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[note]"
+                      dataType="i2"
+                      name="note" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[lecture_group]"
+                      dataType="i4"
+                      name="lecture_group" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination - exam.Inputs[Destination Input].ExternalColumns[stud_s]"
+                      dataType="wstr"
+                      length="2"
+                      name="stud_s" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data\Destination - exam.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Data\Destination - exam.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Destination - exam.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Destination - exam.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data\Destination - exam.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Destination - exam.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data\Destination 1 - lehrer_prod"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 1 - lehrer_prod"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[lehrer_prod]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data\Destination 1 - lehrer_prod.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].Columns[teacher_Code]"
+                      cachedDataType="i4"
+                      cachedName="teacher_Code"
+                      externalMetadataColumnId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].ExternalColumns[teacher_Code]"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[teacher_Code]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].Columns[sex]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="sex"
+                      externalMetadataColumnId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].ExternalColumns[sex]"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[sex]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].Columns[titel_code]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="titel_code"
+                      externalMetadataColumnId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].ExternalColumns[titel_code]"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[titel_code]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].Columns[teach_duration]"
+                      cachedDataType="i4"
+                      cachedName="teach_duration"
+                      externalMetadataColumnId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].ExternalColumns[teach_duration]"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[teach_duration]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].ExternalColumns[teacher_Code]"
+                      dataType="i4"
+                      name="teacher_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].ExternalColumns[sex]"
+                      dataType="wstr"
+                      length="255"
+                      name="sex" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].ExternalColumns[titel_code]"
+                      dataType="wstr"
+                      length="12"
+                      name="titel_code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input].ExternalColumns[teach_duration]"
+                      dataType="i4"
+                      name="teach_duration" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data\Destination 1 - lehrer_prod.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Destination 1 - lehrer_prod.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Destination 1 - lehrer_prod.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data\Destination 1 - lehrer_prod.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Destination 1 - lehrer_prod.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data\Destination 2 - Student_Group"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 2 - Student_Group"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Student_Group]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data\Destination 2 - Student_Group.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data\Destination 2 - Student_Group.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data\Destination 2 - Student_Group.Inputs[Destination Input].Columns[Student_group]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Student_group"
+                      externalMetadataColumnId="Package\Load Data\Destination 2 - Student_Group.Inputs[Destination Input].ExternalColumns[Student_group]"
+                      lineageId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output].Columns[Student_group]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination 2 - Student_Group.Inputs[Destination Input].Columns[StudentCode]"
+                      cachedDataType="i4"
+                      cachedName="StudentCode"
+                      externalMetadataColumnId="Package\Load Data\Destination 2 - Student_Group.Inputs[Destination Input].ExternalColumns[StudentCode]"
+                      lineageId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output].Columns[StudentCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination 2 - Student_Group.Inputs[Destination Input].ExternalColumns[Student_group]"
+                      dataType="wstr"
+                      length="1"
+                      name="Student_group" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination 2 - Student_Group.Inputs[Destination Input].ExternalColumns[StudentCode]"
+                      dataType="i4"
+                      name="StudentCode" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data\Destination 2 - Student_Group.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Data\Destination 2 - Student_Group.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Destination 2 - Student_Group.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Destination 2 - Student_Group.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data\Destination 2 - Student_Group.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Destination 2 - Student_Group.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data\Destination 3 - teacher_group"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 3 - teacher_group"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[teacher_group]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data\Destination 3 - teacher_group.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data\Destination 3 - teacher_group.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data\Destination 3 - teacher_group.Inputs[Destination Input].Columns[LehrerCode]"
+                      cachedDataType="i4"
+                      cachedName="LehrerCode"
+                      externalMetadataColumnId="Package\Load Data\Destination 3 - teacher_group.Inputs[Destination Input].ExternalColumns[LehrerCode]"
+                      lineageId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output].Columns[LehrerCode]" />
+                    <inputColumn
+                      refId="Package\Load Data\Destination 3 - teacher_group.Inputs[Destination Input].Columns[typ]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="typ"
+                      externalMetadataColumnId="Package\Load Data\Destination 3 - teacher_group.Inputs[Destination Input].ExternalColumns[typ]"
+                      lineageId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output].Columns[typ]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination 3 - teacher_group.Inputs[Destination Input].ExternalColumns[LehrerCode]"
+                      dataType="i4"
+                      name="LehrerCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Destination 3 - teacher_group.Inputs[Destination Input].ExternalColumns[typ]"
+                      dataType="wstr"
+                      length="255"
+                      name="typ" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data\Destination 3 - teacher_group.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Data\Destination 3 - teacher_group.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Destination 3 - teacher_group.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Destination 3 - teacher_group.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data\Destination 3 - teacher_group.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Destination 3 - teacher_group.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data\Drop illegal grades"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Drop illegal grades"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Data\Drop illegal grades.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data\Drop illegal grades.Inputs[Conditional Split Input].Columns[note]"
+                      cachedDataType="i2"
+                      cachedName="note"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[note]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data\Drop illegal grades.Outputs[correct]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="correct"
+                  synchronousInputId="Package\Load Data\Drop illegal grades.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[note]} &lt;= 5</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">note &lt;= 5</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data\Drop illegal grades.Outputs[incorrect]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="incorrect"
+                  synchronousInputId="Package\Load Data\Drop illegal grades.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data\Drop illegal grades.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load Data\Drop illegal grades.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Drop illegal grades.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Drop illegal grades.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data\Drop illegal grades.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Drop illegal grades.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data\Source - exam"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - exam"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">exam</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data\Source - exam.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[student_Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[student_Code]"
+                      length="50"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[student_Code]"
+                      name="student_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[lecture_Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[lecture_Code]"
+                      length="20"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[lecture_Code]"
+                      name="lecture_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[sem]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[sem]"
+                      length="10"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[sem]"
+                      name="sem"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[semnr]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[semnr]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[semnr]"
+                      name="semnr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[probation]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[probation]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[probation]"
+                      name="probation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[teacher_Code]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[teacher_Code]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[teacher_Code]"
+                      name="teacher_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[note]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[note]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[note]"
+                      name="note"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[lecture_group]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[lecture_group]"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[lecture_group]"
+                      name="lecture_group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[stud_s]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[stud_s]"
+                      length="2"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[stud_s]"
+                      name="stud_s"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[student_Code]"
+                      dataType="wstr"
+                      length="50"
+                      name="student_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[lecture_Code]"
+                      dataType="wstr"
+                      length="20"
+                      name="lecture_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[sem]"
+                      dataType="wstr"
+                      length="10"
+                      name="sem" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[semnr]"
+                      dataType="i2"
+                      name="semnr" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[probation]"
+                      dataType="i2"
+                      name="probation" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[teacher_Code]"
+                      dataType="i4"
+                      name="teacher_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[note]"
+                      dataType="i2"
+                      name="note" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[lecture_group]"
+                      dataType="i4"
+                      name="lecture_group" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].ExternalColumns[stud_s]"
+                      dataType="wstr"
+                      length="2"
+                      name="stud_s" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[student_Code]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[student_Code]"
+                      name="student_Code" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[lecture_Code]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[lecture_Code]"
+                      name="lecture_Code" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[sem]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[sem]"
+                      name="sem" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[semnr]"
+                      dataType="i2"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[semnr]"
+                      name="semnr" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[probation]"
+                      dataType="i2"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[probation]"
+                      name="probation" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[teacher_Code]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[teacher_Code]"
+                      name="teacher_Code" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[note]"
+                      dataType="i2"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[note]"
+                      name="note" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[lecture_group]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[lecture_group]"
+                      name="lecture_group" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[stud_s]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[stud_s]"
+                      name="stud_s" />
+                    <outputColumn
+                      refId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data\Source 1 - lehrer_prod"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source 1 - lehrer_prod"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">lehrer_prod</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data\Source 1 - lehrer_prod.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[teacher_Code]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].ExternalColumns[teacher_Code]"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[teacher_Code]"
+                      name="teacher_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[sex]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].ExternalColumns[sex]"
+                      length="255"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[sex]"
+                      name="sex"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[titel_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].ExternalColumns[titel_code]"
+                      length="12"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[titel_code]"
+                      name="titel_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[teach_duration]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].ExternalColumns[teach_duration]"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].Columns[teach_duration]"
+                      name="teach_duration"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].ExternalColumns[teacher_Code]"
+                      dataType="i4"
+                      name="teacher_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].ExternalColumns[sex]"
+                      dataType="wstr"
+                      length="255"
+                      name="sex" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].ExternalColumns[titel_code]"
+                      dataType="wstr"
+                      length="12"
+                      name="titel_code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output].ExternalColumns[teach_duration]"
+                      dataType="i4"
+                      name="teach_duration" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[teacher_Code]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[teacher_Code]"
+                      name="teacher_Code" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[sex]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[sex]"
+                      name="sex" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[titel_code]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[titel_code]"
+                      name="titel_code" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[teach_duration]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[teach_duration]"
+                      name="teach_duration" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data\Source 2 - Student_Group"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source 2 - Student_Group"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Student_Group</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data\Source 2 - Student_Group.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output].Columns[Student_group]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output].ExternalColumns[Student_group]"
+                      length="1"
+                      lineageId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output].Columns[Student_group]"
+                      name="Student_group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output].Columns[StudentCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output].ExternalColumns[StudentCode]"
+                      lineageId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output].Columns[StudentCode]"
+                      name="StudentCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output].ExternalColumns[Student_group]"
+                      dataType="wstr"
+                      length="1"
+                      name="Student_group" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output].ExternalColumns[StudentCode]"
+                      dataType="i4"
+                      name="StudentCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Error Output].Columns[Student_group]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Error Output].Columns[Student_group]"
+                      name="Student_group" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Error Output].Columns[StudentCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Error Output].Columns[StudentCode]"
+                      name="StudentCode" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data\Source 3 - teacher_group"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source 3 - teacher_group"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">teacher_group</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data\Source 3 - teacher_group.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output].Columns[LehrerCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output].ExternalColumns[LehrerCode]"
+                      lineageId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output].Columns[LehrerCode]"
+                      name="LehrerCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output].Columns[typ]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output].ExternalColumns[typ]"
+                      length="255"
+                      lineageId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output].Columns[typ]"
+                      name="typ"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output].ExternalColumns[LehrerCode]"
+                      dataType="i4"
+                      name="LehrerCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output].ExternalColumns[typ]"
+                      dataType="wstr"
+                      length="255"
+                      name="typ" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Error Output].Columns[LehrerCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Error Output].Columns[LehrerCode]"
+                      name="LehrerCode" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Error Output].Columns[typ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Error Output].Columns[typ]"
+                      name="typ" />
+                    <outputColumn
+                      refId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Data.Paths[correct]"
+              endId="Package\Load Data\Destination - exam.Inputs[Destination Input]"
+              name="correct"
+              startId="Package\Load Data\Drop illegal grades.Outputs[correct]" />
+            <path
+              refId="Package\Load Data.Paths[OLE DB Source Output]"
+              endId="Package\Load Data\Destination 1 - lehrer_prod.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Data\Source 1 - lehrer_prod.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load Data.Paths[OLE DB Source Output1]"
+              endId="Package\Load Data\Destination 2 - Student_Group.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Data\Source 2 - Student_Group.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load Data.Paths[OLE DB Source Output2]"
+              endId="Package\Load Data\Destination 3 - teacher_group.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load Data.Paths[OLE DB Source Output3]"
+              endId="Package\Load Data\Drop illegal grades.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparator"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{386F4C98-FC08-4BB3-8F9C-D4A2F3542DB7}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparator">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Preparator\Create Tables"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DTSID="{581900DF-EF41-4AFA-815D-54BD895F8ABA}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Tables"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D45EC97F-292B-4214-B86C-E6F9545B59BF}"
+              SQLTask:SqlStatementSource="CREATE TABLE [dbo].[exam] (&#xA;[student_Code] nvarchar(50),&#xA;[lecture_Code] nvarchar(20),&#xA;[sem] nvarchar(10),&#xA;[semnr] smallint,&#xA;[probation] smallint,&#xA;[teacher_Code] int,&#xA;[note] smallint,&#xA;[lecture_group] int,&#xA;[stud_s] nvarchar(2)&#xA;)&#xA;GO&#xA;CREATE TABLE [dbo].[lehrer_prod] (&#xA;[teacher_Code] int,&#xA;[sex] nvarchar(255),&#xA;[titel_code] nvarchar(12),&#xA;[teach_duration] int&#xA;)&#xA;GO&#xA;CREATE TABLE [dbo].[Student_Group] (&#xA;[Student_group] nvarchar(1),&#xA;[StudentCode] int&#xA;)&#xA;GO&#xA;CREATE TABLE [dbo].[teacher_group] (&#xA;[LehrerCode] int NOT NULL,&#xA;[typ] nvarchar(255)&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FD133CF9-A459-40AD-A4E3-80CC764C2D24}"
+      DTS:From="Package\Drop old Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Data" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{6A74F2AB-CD61-4219-A0B8-34D9A8542F07}"
+      DTS:From="Package\Preparator"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Drop old Data" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{BA8A714C-093A-4F66-8184-89E79F6E3DBD}"
+      DTS:From="Package\Load Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Concistency Exam" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Concistency Exam"
+          TopLeft="73,445" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Drop old Data"
+          TopLeft="87,223" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\Load Data"
+          TopLeft="93.5,340.5" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Preparator\Create Tables"
+          TopLeft="30.5,13.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="288,111"
+          Size="288,154"
+          Id="Package\Preparator"
+          TopLeft="17,10" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="158.25,265">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75.5"
+              Start="0,0"
+              End="0,68">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="160.25,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="156,382.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.5"
+              Start="0,0"
+              End="0,55">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="220,42"
+          Id="Package\Load Data\Destination 3 - teacher_group"
+          TopLeft="511.5,107.5" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Load Data\Source - exam"
+          TopLeft="26,5.5" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Load Data\Source 2 - Student_Group"
+          TopLeft="802.5,5.49999999999989" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Load Data\Drop illegal grades"
+          TopLeft="18,120" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Load Data\Source 3 - teacher_group"
+          TopLeft="522,5.49999999999989" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Load Data\Source 1 - lehrer_prod"
+          TopLeft="255,5.5" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Load Data\Destination 1 - lehrer_prod"
+          TopLeft="244.5,107.5" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Load Data\Destination - exam"
+          TopLeft="14.5,254.5" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Load Data\Destination 2 - Student_Group"
+          TopLeft="792.5,107.5" />
+        <EdgeLayout
+          Id="Package\Load Data.Paths[OLE DB Source Output3]"
+          TopLeft="100.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72.5"
+              Start="0,0"
+              End="0,65">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[OLE DB Source Output2]"
+          TopLeft="621.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[OLE DB Source Output1]"
+          TopLeft="903.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[OLE DB Source Output]"
+          TopLeft="347.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[correct]"
+          TopLeft="100,162">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,92.5"
+              Start="0,0"
+              End="0,85">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,85" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-16.07599609375,37.91357421875,32.1519921875,9.1728515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
