@@ -14,6 +14,9 @@
       <Dimension>
         <ID>Lehrer Prod</ID>
       </Dimension>
+      <Dimension>
+        <ID>Student</ID>
+      </Dimension>
     </Dimensions>
     <Cubes>
       <Cube>

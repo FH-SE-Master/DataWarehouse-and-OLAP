@@ -23,6 +23,10 @@
       <Name>Lehrer Prod.dim</Name>
       <FullPath>Lehrer Prod.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Student.dim</Name>
+      <FullPath>Student.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>

@@ -26,21 +26,28 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.DataSourceView</Type>
-        <TimeStamp>UjCQKWHYe/E2Ckth5dGspTCQgiA=10/22/2016 10:17:36 AM10/22/2016 10:14:25 AM</TimeStamp>
+        <TimeStamp>RaMORT0q9nDaxoUjpJfqLTagA/s=10/22/2016 12:45:19 PM10/22/2016 10:14:25 AM</TimeStamp>
         <ID>
           <String>MDE DWO WS1617</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>BV7DDtnTNi7mA7YQvkx2Prjt+aI=10/22/2016 11:30:22 AM10/22/2016 10:24:46 AM</TimeStamp>
+        <TimeStamp>9g2wS2Zx+sFMt+IJSTNzkzQ8ZOM=10/22/2016 12:45:47 PM10/22/2016 10:24:46 AM</TimeStamp>
         <ID>
           <String>Lehrer Prod</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>aA9Ef7CD/3SwP/5qtnRj+ARPZxc=10/22/2016 12:15:35 PM10/22/2016 12:15:35 PM</TimeStamp>
+        <ID>
+          <String>Student</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Cube</Type>
-        <TimeStamp>hMuptXmiHxTLWTbkyeSjC0kFmF0=10/22/2016 11:30:22 AM10/22/2016 10:24:46 AMe5EdCkV4mZp+pitlQHRF9LWppic=10/22/2016 11:12:31 AM10/22/2016 10:24:46 AM</TimeStamp>
+        <TimeStamp>wYdcnit1Z+NvVwEtKSJs9eo+ZUw=10/22/2016 12:45:49 PM10/22/2016 10:24:46 AMe5EdCkV4mZp+pitlQHRF9LWppic=10/22/2016 11:12:31 AM10/22/2016 10:24:46 AM</TimeStamp>
         <ID>
           <String>MDE DWO WS1617_NOTE_CUBE</String>
         </ID>
@@ -57,5 +64,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2016-10-22T09:30:34.726667Z</LastDeployed>
+  <LastDeployed>2016-10-22T10:45:55.43Z</LastDeployed>
 </DeploymentSnapshot>
