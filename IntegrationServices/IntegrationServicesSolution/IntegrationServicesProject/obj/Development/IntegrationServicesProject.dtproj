@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">SERVER2012</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbLW235irJEW0fqv5eD63SQAAAAACAAAAAAAQZgAAAAEAACAAAACsM0007ptwk4Qmzqp5oQ5Hj/xB2FDRitOj1yWRngmriwAAAAAOgAAAAAIAACAAAAA9rNbPDxn+g+avGWvX8jIbvU36Vhtz7ZpdYZ1/7qVTsZAAAADGpfW5x/w8p1VpLcrw5p3s2/yhXxtGdHGtQIoFInE1FnnBzXXt8qBm6gS/5BOaGOkL43EH03oX1E0oVGjQHJMzyJpFfuL8Yu0EU6RrUYJWUmQti9SAOLsMoH9gDotZSlNqF18V9/CET6G7CwPBFbsQmerDU1373doh9lrfFgwNs5E+AZpR0Ki0hw2NW1puBghAAAAAEF3HUYecTKZctLNPS4ftHR5Z1oFEjVQaISssUStN9nbKzAWAv/PcYN7vt14c4TeYVdoKeaV2teL4ZmjaYgN6gA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAe/G3ND8oCkqCKs7hzlFjSAAAAAACAAAAAAAQZgAAAAEAACAAAAA9WDhwS4OisC72YuQK3TvvrPRAOSwClBf+dx4ba/tBdwAAAAAOgAAAAAIAACAAAAASTgrgrVWIKrkqTwl/2G6oE5OPpu703Tmj7jj848BexZAAAACaUpfqjmD1d5pvL6CW5jKXDsQNTalIr1YhUk6Lt82EuCFpKF2bYWPrZTM8nGrS99R/qvDRmWRY+nmx0qR6c0jyNS+skvLuVIlR94AMZ/O9PTQ5Biyorbjav+Qti79FT/GR2DLset0wKc82C7AiBz3zn2lXqR0drzvm9Sv67n/IwSrnvZzil08sVdHvz7vyBm1AAAAA9HlG3jVedXmJgSpPmgx9EehN/UrR87MWtSxDvt7VKsGDV9bYd6awfVFAHRcD43AlnQhct07cNODIJjKajXsSCw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -200,8 +200,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -331,10 +329,10 @@
                 <SSIS:Property SSIS:Name="Name">ETL</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">38</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6A7F0690-F063-4F44-AB80-636214084677}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{6D5D744D-98D4-49EC-BF53-98D546030AF3}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">DTS Wizard-generated package</SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
@@ -428,6 +426,94 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.ERROR_MDE_DWO_WS1617.ConnectionString">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=localhost;Initial Catalog=MDE_DWO_WS1617;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.ERROR_MDE_DWO_WS1617.InitialCatalog">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">MDE_DWO_WS1617</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.ERROR_MDE_DWO_WS1617.Password">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.ERROR_MDE_DWO_WS1617.RetainSameConnection">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.ERROR_MDE_DWO_WS1617.ServerName">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">localhost</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.ERROR_MDE_DWO_WS1617.UserName">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
                 <SSIS:Parameter SSIS:Name="CM.SourceConnectionOLEDB.ConnectionString">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
@@ -439,7 +525,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=C:\Users\User\FHMaster\DW01IL\DW01ILV\ue\dw\fhhnotes.mdb;OLE DB SERVICES=0;Provider=Microsoft.ACE.OLEDB.12.0;Persist Security Info=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=X:\Google Drive\FH-SE-Master\1.Semester\DW01ILV\ue\dw\fhhnotes.mdb;Provider=Microsoft.Jet.OLEDB.4.0;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -497,7 +583,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\User\FHMaster\DW01IL\DW01ILV\ue\dw\fhhnotes.mdb</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">X:\Google Drive\FH-SE-Master\1.Semester\DW01ILV\ue\dw\fhhnotes.mdb</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>

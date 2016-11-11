@@ -2,18 +2,18 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>IntegrationServicesProject</Name>
-    <LastWriteTime>2016-10-22T11:35:48.7371823Z</LastWriteTime>
+    <LastWriteTime>2016-11-10T15:21:54.2869834Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Package.dtsx</Name>
-      <LastWriteTime>2016-10-22T11:35:48.7227516Z</LastWriteTime>
+      <LastWriteTime>2016-11-10T08:41:13.2184936Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ETL.dtsx</Name>
-      <LastWriteTime>2016-10-22T09:16:32.2429646Z</LastWriteTime>
+      <LastWriteTime>2016-11-10T15:25:35.4675522Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
