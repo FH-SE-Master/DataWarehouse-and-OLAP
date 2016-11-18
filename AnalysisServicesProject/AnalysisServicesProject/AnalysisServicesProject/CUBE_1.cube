@@ -1,0 +1,225 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="c3a0d221-d19d-4a83-9923-383b3cc5aa4d" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>CUBE_1</ID>
+  <Name>CUBE_1</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Dimensions>
+    <Dimension dwd:design-time-name="9dfe31d6-0825-4a16-bd94-983f668b137e">
+      <ID>student</ID>
+      <Name>student</Name>
+      <DimensionID>student</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="550df2ab-6a7f-497e-8bce-318d9ab1a22b">
+          <AttributeID>Student Sex</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="5dc2eb1d-0513-46c8-994d-8fd573ce9d62">
+          <AttributeID>Student Code</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="bf523f5b-122f-45e4-bfda-b26b417131df">
+      <ID>Teacher</ID>
+      <Name>Teacher</Name>
+      <DimensionID>Teacher</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="5cd6ef24-75ce-4761-bcff-19ac00da721a">
+          <AttributeID>Teacher Code</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="57f98b5b-b702-4f4d-afa2-38927e257b9e">
+          <AttributeID>Sex</AttributeID>
+        </Attribute>
+      </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="d8981525-f9fc-4904-96da-1057dfd14807">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
+    </Dimension>
+    <Dimension dwd:design-time-name="05879762-d1cd-466a-87b9-53a7c71ca15e">
+      <ID>Student 1</ID>
+      <Name>Student 1</Name>
+      <DimensionID>Student Group</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="c25bcf51-7157-4f78-8e00-44916cd11338">
+          <AttributeID>Student Code</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="acdd9986-506e-4a6d-92fc-8413ef22bfba">
+      <ID>Student - Student</ID>
+      <Name>Student - Student</Name>
+      <DimensionID>Student Group</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="74490d3a-7093-41dc-8344-259de11b8223">
+          <AttributeID>Student Code</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="91aa27d5-2980-4526-982b-f60a4916ae77">
+      <ID>Teacher Group</ID>
+      <Name>Teacher Group</Name>
+      <DimensionID>Teacher Group</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="66865bcf-ffc7-467d-9620-3cab8b71e3c0">
+          <AttributeID>Teacher Code</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+  </Dimensions>
+  <MeasureGroups>
+    <MeasureGroup dwd:design-time-name="2e6328e7-386b-4911-bc66-5ac2de648815">
+      <ID>Exam</ID>
+      <Name>Exam</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="c6663380-ac5f-4fc2-9744-b439d7849be3">
+          <ID>Mark</ID>
+          <Name>Mark</Name>
+          <Source dwd:design-time-name="9f05a1cc-e173-4c8e-bb2a-fed6aa0c5fc6">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="7d40b3b7-c35f-4e10-94ef-b6b2bdd42258">
+              <TableID>dbo_exam</TableID>
+              <ColumnID>mark</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="5ea4bf8f-bace-4ddc-a2fd-d47dc6f4ce93">
+          <CubeDimensionID>student</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="c345ecb6-bfa7-4973-960a-ba93550f6192">
+              <AttributeID>Student Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="ce74a41d-161d-44ef-8dfc-626d5262f8a6">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="9459e021-44a9-4e34-a9ad-3b980d7e6c30">
+                    <TableID>dbo_exam</TableID>
+                    <ColumnID>student_Code</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="ac0448fa-e3cb-4960-9b31-6e77593d493d">
+          <CubeDimensionID>Teacher</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="33e5c76c-2f87-4f65-92a3-0478890be476">
+              <AttributeID>Teacher Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="2a7e9fab-b75c-40c8-a8f7-21c53aaf30a1">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="bfafb3f6-3531-4607-90e8-95e46313b337">
+                    <TableID>dbo_exam</TableID>
+                    <ColumnID>teacher_Code</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="a1d3bbbd-7347-479e-98c5-53b5f8c161d7">
+          <CubeDimensionID>Student 1</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="8113636a-28e8-4832-a9be-a6cdf1a03479">
+              <AttributeID>Student Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="2a9f039a-0588-441a-9e7b-b1ed990ecc24">
+                  <DataType>Integer</DataType>
+                  <NullProcessing>UnknownMember</NullProcessing>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="5c2edb07-c559-4775-ba66-b27efdbd0966">
+                    <TableID>dbo_exam</TableID>
+                    <ColumnID>student_Code</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="d51645c3-e402-443f-a0a9-344a25e02839">
+          <CubeDimensionID>Teacher Group</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="57d0366c-63ce-480c-b105-b5f2f39fdcd0">
+              <AttributeID>Teacher Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="038721d1-d812-4742-bdf1-0878501d21c4">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="4f5f3b6c-8034-487b-86cd-5c2c77fbadbe">
+                    <TableID>dbo_exam</TableID>
+                    <ColumnID>teacher_Code</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="ReferenceMeasureGroupDimension" dwd:design-time-name="969e8ce4-d469-4155-b5c3-b398ee2a0451">
+          <CubeDimensionID>Student - Student</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="55c3fdba-7694-4bf6-b7ba-1697ab637a5f">
+              <AttributeID>Student Code</AttributeID>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+          <IntermediateCubeDimensionID>student</IntermediateCubeDimensionID>
+          <IntermediateGranularityAttributeID>Student Code</IntermediateGranularityAttributeID>
+          <Materialization>Regular</Materialization>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+  </MeasureGroups>
+  <Source dwd:design-time-name="bfb631e4-af09-4091-a757-a872489a6252">
+    <DataSourceViewID>MDE DWO WS1617</DataSourceViewID>
+  </Source>
+</Cube>

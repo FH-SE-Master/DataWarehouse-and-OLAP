@@ -8,24 +8,32 @@
   </Database>
   <Cubes>
     <ProjectItem>
-      <Name>MDE DWO WS1617_NOTE_CUBE.cube</Name>
-      <FullPath>MDE DWO WS1617_NOTE_CUBE.cube</FullPath>
+      <Name>CUBE_1.cube</Name>
+      <FullPath>CUBE_1.cube</FullPath>
       <Dependencies>
         <ProjectItem>
-          <Name>MDE DWO WS1617_NOTE_CUBE.partitions</Name>
-          <FullPath>MDE DWO WS1617_NOTE_CUBE.partitions</FullPath>
+          <Name>CUBE_1.partitions</Name>
+          <FullPath>CUBE_1.partitions</FullPath>
         </ProjectItem>
       </Dependencies>
     </ProjectItem>
   </Cubes>
   <Dimensions>
     <ProjectItem>
-      <Name>Lehrer Prod.dim</Name>
-      <FullPath>Lehrer Prod.dim</FullPath>
+      <Name>teacher.dim</Name>
+      <FullPath>Teacher.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Student.dim</Name>
-      <FullPath>Student.dim</FullPath>
+      <Name>student.dim</Name>
+      <FullPath>student.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Student Group.dim</Name>
+      <FullPath>Student Group.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Teacher Group.dim</Name>
+      <FullPath>Teacher Group.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>

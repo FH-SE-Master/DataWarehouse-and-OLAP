@@ -19,43 +19,57 @@
     <ObjectSnapshots>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
-        <TimeStamp>YJh2IpxY6T2YoZe7jqbuJEA2qVM=10/22/2016 10:07:33 AM10/22/2016 10:07:33 AM</TimeStamp>
+        <TimeStamp>YJh2IpxY6T2YoZe7jqbuJEA2qVM=10/22/16 1:42:21 PM10/22/16 12:52:40 PM</TimeStamp>
         <ID>
           <String>MDE DWO WS1617</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.DataSourceView</Type>
-        <TimeStamp>RaMORT0q9nDaxoUjpJfqLTagA/s=10/22/2016 12:45:19 PM10/22/2016 10:14:25 AM</TimeStamp>
+        <TimeStamp>VquRzXnuNNTECWF0imfBfdCDN9o=11/18/16 4:02:07 PM10/22/16 12:52:40 PM</TimeStamp>
         <ID>
           <String>MDE DWO WS1617</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>9g2wS2Zx+sFMt+IJSTNzkzQ8ZOM=10/22/2016 12:45:47 PM10/22/2016 10:24:46 AM</TimeStamp>
+        <TimeStamp>9hm6e0s15T/kpkleEMmAuSffYhA=11/18/16 3:15:59 PM11/18/16 3:00:23 PM</TimeStamp>
         <ID>
-          <String>Lehrer Prod</String>
+          <String>Teacher</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>aA9Ef7CD/3SwP/5qtnRj+ARPZxc=10/22/2016 12:15:35 PM10/22/2016 12:15:35 PM</TimeStamp>
+        <TimeStamp>XtODtpu6puZT+k4pJwn8F3GZQtU=11/18/16 3:55:52 PM11/18/16 3:15:58 PM</TimeStamp>
         <ID>
-          <String>Student</String>
+          <String>student</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>7tRgV1ouSU+FglpHJzmDUcVGhxE=11/18/16 3:29:27 PM11/18/16 3:29:27 PM</TimeStamp>
+        <ID>
+          <String>Student Group</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>uQwYdQWA2UPEzxSHTyb8YNnlpbU=11/18/16 3:29:27 PM11/18/16 3:29:27 PM</TimeStamp>
+        <ID>
+          <String>Teacher Group</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Cube</Type>
-        <TimeStamp>wYdcnit1Z+NvVwEtKSJs9eo+ZUw=10/22/2016 12:45:49 PM10/22/2016 10:24:46 AMe5EdCkV4mZp+pitlQHRF9LWppic=10/22/2016 11:12:31 AM10/22/2016 10:24:46 AM</TimeStamp>
+        <TimeStamp>y560aJohvssoFPEJ1DeOXYFnhmM=11/18/16 4:03:10 PM11/18/16 4:03:10 PM6GaE78y0WGv0RofaJwYdLPS7D2k=11/18/16 4:03:10 PM11/18/16 4:03:10 PM</TimeStamp>
         <ID>
-          <String>MDE DWO WS1617_NOTE_CUBE</String>
+          <String>CUBE_1</String>
         </ID>
       </ObjectSnapshot>
     </ObjectSnapshots>
     <DatabaseSnapshot>
       <Type>Microsoft.AnalysisServices.Database</Type>
-      <TimeStamp>1/zdqB52HZ+oaECxr72FI2DNDPE=10/22/2016 10:06:02 AM10/22/2016 10:06:02 AM</TimeStamp>
+      <TimeStamp>FKsgvwlo2IxaDObpVSZCaLcWelw=11/18/16 3:10:34 PM10/22/16 12:52:40 PM</TimeStamp>
       <ID>
         <String>AnalysisServicesProject</String>
       </ID>
@@ -64,5 +78,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2016-10-22T10:45:55.43Z</LastDeployed>
+  <LastDeployed>2016-11-18T15:03:21.846667Z</LastDeployed>
 </DeploymentSnapshot>

@@ -12,15 +12,21 @@
     </DataSources>
     <Dimensions>
       <Dimension>
-        <ID>Lehrer Prod</ID>
+        <ID>Teacher</ID>
       </Dimension>
       <Dimension>
-        <ID>Student</ID>
+        <ID>student</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Student Group</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Teacher Group</ID>
       </Dimension>
     </Dimensions>
     <Cubes>
       <Cube>
-        <ID>MDE DWO WS1617_NOTE_CUBE</ID>
+        <ID>CUBE_1</ID>
         <MeasureGroups>
           <MeasureGroup>
             <ID>Exam</ID>
