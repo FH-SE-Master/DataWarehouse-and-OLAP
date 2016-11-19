@@ -19,57 +19,71 @@
     <ObjectSnapshots>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
-        <TimeStamp>YJh2IpxY6T2YoZe7jqbuJEA2qVM=10/22/16 1:42:21 PM10/22/16 12:52:40 PM</TimeStamp>
+        <TimeStamp>YJh2IpxY6T2YoZe7jqbuJEA2qVM=11/10/16 9:41:13 AM11/10/16 9:41:13 AM</TimeStamp>
         <ID>
           <String>MDE DWO WS1617</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.DataSourceView</Type>
-        <TimeStamp>VquRzXnuNNTECWF0imfBfdCDN9o=11/18/16 4:02:07 PM10/22/16 12:52:40 PM</TimeStamp>
+        <TimeStamp>DEryB4uCNK5q1vw9chP6ReRN/1E=11/19/16 7:57:16 PM11/19/16 9:32:40 AM</TimeStamp>
         <ID>
           <String>MDE DWO WS1617</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>9hm6e0s15T/kpkleEMmAuSffYhA=11/18/16 3:15:59 PM11/18/16 3:00:23 PM</TimeStamp>
+        <TimeStamp>xr4CdNesMr8evHkj4HEwCacTsQo=11/19/16 8:05:06 PM11/19/16 11:37:35 AM</TimeStamp>
         <ID>
-          <String>Teacher</String>
+          <String>Course Dimension</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>XtODtpu6puZT+k4pJwn8F3GZQtU=11/18/16 3:55:52 PM11/18/16 3:15:58 PM</TimeStamp>
+        <TimeStamp>lISEvU5ThACzAPMYMuuoeg/k33Y=11/19/16 11:44:05 AM11/19/16 11:39:22 AM</TimeStamp>
         <ID>
-          <String>student</String>
+          <String>Semester</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>7tRgV1ouSU+FglpHJzmDUcVGhxE=11/18/16 3:29:27 PM11/18/16 3:29:27 PM</TimeStamp>
+        <TimeStamp>OCPR58UHevRkr/mnshYfqGtBlIs=11/19/16 6:50:52 PM11/19/16 11:44:32 AM</TimeStamp>
         <ID>
-          <String>Student Group</String>
+          <String>Teacher Dimension</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>uQwYdQWA2UPEzxSHTyb8YNnlpbU=11/18/16 3:29:27 PM11/18/16 3:29:27 PM</TimeStamp>
+        <TimeStamp>Fi1MtWu/O9r4yzrTkP2oPQ/xRbg=11/19/16 6:52:59 PM11/19/16 5:05:38 PM</TimeStamp>
         <ID>
-          <String>Teacher Group</String>
+          <String>Workload</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>5HarTac5kMgCvw1h46jzEZUf+fo=11/19/16 7:01:57 PM11/19/16 6:55:37 PM</TimeStamp>
+        <ID>
+          <String>Student Dimension</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>STUEnexJc1SGHgeavobxgdij26U=11/19/16 7:57:16 PM11/19/16 7:57:16 PM</TimeStamp>
+        <ID>
+          <String>Probation Dimension</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Cube</Type>
-        <TimeStamp>y560aJohvssoFPEJ1DeOXYFnhmM=11/18/16 4:03:10 PM11/18/16 4:03:10 PM6GaE78y0WGv0RofaJwYdLPS7D2k=11/18/16 4:03:10 PM11/18/16 4:03:10 PM</TimeStamp>
+        <TimeStamp>5WYALA1zTUlj4GcFrn3/W7xkKo4=11/19/16 8:03:45 PM11/19/16 6:50:20 PMvSkF41HGNBbTBUrj5KV7u0qMfjk=11/19/16 6:50:20 PM11/19/16 6:50:20 PM</TimeStamp>
         <ID>
-          <String>CUBE_1</String>
+          <String>CUBE</String>
         </ID>
       </ObjectSnapshot>
     </ObjectSnapshots>
     <DatabaseSnapshot>
       <Type>Microsoft.AnalysisServices.Database</Type>
-      <TimeStamp>FKsgvwlo2IxaDObpVSZCaLcWelw=11/18/16 3:10:34 PM10/22/16 12:52:40 PM</TimeStamp>
+      <TimeStamp>FKsgvwlo2IxaDObpVSZCaLcWelw=11/19/16 9:32:40 AM11/19/16 9:32:40 AM</TimeStamp>
       <ID>
         <String>AnalysisServicesProject</String>
       </ID>
@@ -78,5 +92,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2016-11-18T15:03:21.846667Z</LastDeployed>
+  <LastDeployed>2016-11-19T19:05:10.046667Z</LastDeployed>
 </DeploymentSnapshot>

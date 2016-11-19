@@ -12,21 +12,27 @@
     </DataSources>
     <Dimensions>
       <Dimension>
-        <ID>Teacher</ID>
+        <ID>Course Dimension</ID>
       </Dimension>
       <Dimension>
-        <ID>student</ID>
+        <ID>Semester</ID>
       </Dimension>
       <Dimension>
-        <ID>Student Group</ID>
+        <ID>Teacher Dimension</ID>
       </Dimension>
       <Dimension>
-        <ID>Teacher Group</ID>
+        <ID>Workload</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Student Dimension</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Probation Dimension</ID>
       </Dimension>
     </Dimensions>
     <Cubes>
       <Cube>
-        <ID>CUBE_1</ID>
+        <ID>CUBE</ID>
         <MeasureGroups>
           <MeasureGroup>
             <ID>Exam</ID>
