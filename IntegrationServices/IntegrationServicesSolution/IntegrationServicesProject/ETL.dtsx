@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ETL"
-  DTS:VersionBuild="131"
-  DTS:VersionGUID="{2044E165-2E10-4085-8DBB-17A98B2358B9}">
+  DTS:VersionBuild="149"
+  DTS:VersionGUID="{F312732E-C83F-4065-BDCF-68E4BD3F9967}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -131,6 +131,82 @@
           defaultBufferSize="3145728"
           version="1">
           <components>
+            <component
+              refId="Package\Load Data\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Data\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data\Data Conversion.Inputs[Data Conversion Input].Columns[student_code]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="student_code"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[student_code]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Data\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Data Conversion.Outputs[Data Conversion Output].Columns[student_code_int]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Data\Data Conversion.Outputs[Data Conversion Output].Columns[student_code_int]"
+                      name="student_code_int"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[student_code]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Data\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Load Data\Destination exam"
               componentClassID="Microsoft.OLEDBDestination"
@@ -554,7 +630,7 @@
                       cachedLength="19"
                       cachedName="duration_str"
                       externalMetadataColumnId="Package\Load Data\Destination teacher.Inputs[Destination Input].ExternalColumns[teacher_duration]"
-                      lineageId="Package\Load Data\lehrer_prod#duration null and string conversion.Outputs[Derived Column Output].Columns[duration_str]" />
+                      lineageId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Outputs[Derived Column Output].Columns[duration_str]" />
                     <inputColumn
                       refId="Package\Load Data\Destination teacher.Inputs[Destination Input].Columns[teacher_group]"
                       cachedDataType="wstr"
@@ -795,125 +871,20 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Data\lehrer_prod#duration null and string conversion"
+              refId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown)"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="lehrer_prod#duration null and string conversion"
+              name="lehrer_prod#titel_code teacher_group duration null (unkown)"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Load Data\lehrer_prod#duration null and string conversion.Inputs[Derived Column Input]"
+                  refId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Data\lehrer_prod#duration null and string conversion.Inputs[Derived Column Input].Columns[duration]"
-                      cachedDataType="i4"
-                      cachedName="duration"
-                      lineageId="Package\Load Data\Merge Join 1.Outputs[Merge Join Output].Columns[duration]" />
-                    <inputColumn
-                      refId="Package\Load Data\lehrer_prod#duration null and string conversion.Inputs[Derived Column Input].Columns[teacher_group]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="teacher_group"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Data\Merge Join 1.Outputs[Merge Join Output].Columns[teacher_group]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[REPLACENULL](#{Package\Load Data\Merge Join 1.Outputs[Merge Join Output].Columns[teacher_group]},"unknown")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACENULL(teacher_group,"unknown")</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Data\lehrer_prod#duration null and string conversion.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Data\lehrer_prod#duration null and string conversion.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Data\lehrer_prod#duration null and string conversion.Outputs[Derived Column Output].Columns[duration_str]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="19"
-                      lineageId="Package\Load Data\lehrer_prod#duration null and string conversion.Outputs[Derived Column Output].Columns[duration_str]"
-                      name="duration_str"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">![ISNULL](#{Package\Load Data\Merge Join 1.Outputs[Merge Join Output].Columns[duration]}) ? "Duration " + (DT_WSTR,10)#{Package\Load Data\Merge Join 1.Outputs[Merge Join Output].Columns[duration]} : "unknown"</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">!ISNULL(duration) ? "Duration " + (DT_WSTR,10)duration : "unknown"</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load Data\lehrer_prod#duration null and string conversion.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Load Data\lehrer_prod#duration null and string conversion.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Data\lehrer_prod#duration null and string conversion.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Data\lehrer_prod#duration null and string conversion.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Data\lehrer_prod#duration null and string conversion.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Data\lehrer_prod#duration null and string conversion.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Load Data\lehrer_prod#titel_code null (unkown)"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="lehrer_prod#titel_code null (unkown)"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Load Data\lehrer_prod#titel_code null (unkown).Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Data\lehrer_prod#titel_code null (unkown).Inputs[Derived Column Input].Columns[title_code]"
+                      refId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Inputs[Derived Column Input].Columns[title_code]"
                       cachedDataType="wstr"
                       cachedLength="12"
                       cachedName="title_code"
@@ -936,37 +907,91 @@
                           name="FriendlyExpression">REPLACENULL(title_code,"unknown")</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Inputs[Derived Column Input].Columns[teacher_group]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="teacher_group"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Data\Merge Join 1.Outputs[Merge Join Output].Columns[teacher_group]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Load Data\Merge Join 1.Outputs[Merge Join Output].Columns[teacher_group]},"unknown")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(teacher_group,"unknown")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Inputs[Derived Column Input].Columns[duration]"
+                      cachedDataType="i4"
+                      cachedName="duration"
+                      lineageId="Package\Load Data\Merge Join 1.Outputs[Merge Join Output].Columns[duration]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Data\lehrer_prod#titel_code null (unkown).Outputs[Derived Column Output]"
+                  refId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\Load Data\lehrer_prod#titel_code null (unkown).Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Outputs[Derived Column Output].Columns[duration_str]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="19"
+                      lineageId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Outputs[Derived Column Output].Columns[duration_str]"
+                      name="duration_str"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">![ISNULL](#{Package\Load Data\Merge Join 1.Outputs[Merge Join Output].Columns[duration]}) ? "Duration " + (DT_WSTR,10)#{Package\Load Data\Merge Join 1.Outputs[Merge Join Output].Columns[duration]} : "unknown"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">!ISNULL(duration) ? "Duration " + (DT_WSTR,10)duration : "unknown"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load Data\lehrer_prod#titel_code null (unkown).Outputs[Derived Column Error Output]"
+                  refId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\Load Data\lehrer_prod#titel_code null (unkown).Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Data\lehrer_prod#titel_code null (unkown).Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Data\lehrer_prod#titel_code null (unkown).Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Data\lehrer_prod#titel_code null (unkown).Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Data\lehrer_prod#titel_code null (unkown).Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1007,17 +1032,17 @@
                   name="Merge Join Left Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Data\Merge Join.Inputs[Merge Join Left Input].Columns[student_code]"
-                      cachedDataType="i4"
-                      cachedName="student_code"
-                      cachedSortKeyPosition="1"
-                      lineageId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output].Columns[student_code]" />
-                    <inputColumn
                       refId="Package\Load Data\Merge Join.Inputs[Merge Join Left Input].Columns[student_sex]"
                       cachedDataType="wstr"
                       cachedLength="2"
                       cachedName="student_sex"
-                      lineageId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output].Columns[student_sex]" />
+                      lineageId="Package\Load Data\Sort.Outputs[Sort Output].Columns[student_sex]" />
+                    <inputColumn
+                      refId="Package\Load Data\Merge Join.Inputs[Merge Join Left Input].Columns[student_code]"
+                      cachedDataType="i4"
+                      cachedName="student_code"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Load Data\Sort.Outputs[Sort Output].Columns[student_code]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1049,20 +1074,6 @@
                   name="Merge Join Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Data\Merge Join.Outputs[Merge Join Output].Columns[student_code]"
-                      dataType="i4"
-                      lineageId="Package\Load Data\Merge Join.Outputs[Merge Join Output].Columns[student_code]"
-                      name="student_code"
-                      sortKeyPosition="1">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Load Data\Merge Join.Inputs[Merge Join Left Input].Columns[student_code]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
                       refId="Package\Load Data\Merge Join.Outputs[Merge Join Output].Columns[student_sex]"
                       dataType="wstr"
                       length="2"
@@ -1090,6 +1101,20 @@
                           name="InputColumnID">#{Package\Load Data\Merge Join.Inputs[Merge Join Right Input].Columns[student_group]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Data\Merge Join.Outputs[Merge Join Output].Columns[student_code]"
+                      dataType="i4"
+                      lineageId="Package\Load Data\Merge Join.Outputs[Merge Join Output].Columns[student_code]"
+                      name="student_code"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Data\Merge Join.Inputs[Merge Join Left Input].Columns[student_code]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1107,7 +1132,7 @@
                   dataType="System.Int32"
                   description="Specifies the type of join to perform."
                   name="JoinType"
-                  typeConverter="JoinType">2</property>
+                  typeConverter="JoinType">1</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the number of columns in the ordering key."
@@ -1268,134 +1293,137 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Data\OLE DB Source exam"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source exam"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">exam</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT student_Code AS student_code, stud_s AS student_sex
-FROM            exam
-WHERE note between 1 and 5
-ORDER BY student_Code</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">2</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load Data\OLE DB Source exam.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
-                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
+              refId="Package\Load Data\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Load Data\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output]"
-                  isSorted="true"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output].Columns[student_code]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output].ExternalColumns[student_code]"
-                      lineageId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output].Columns[student_code]"
-                      name="student_code"
-                      sortKeyPosition="1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output].Columns[student_sex]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output].ExternalColumns[student_sex]"
-                      length="2"
-                      lineageId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output].Columns[student_sex]"
-                      name="student_sex"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output].ExternalColumns[student_code]"
-                      dataType="wstr"
-                      length="50"
-                      name="student_code" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output].ExternalColumns[student_sex]"
-                      dataType="wstr"
-                      length="2"
-                      name="student_sex" />
-                  </externalMetadataColumns>
+                  refId="Package\Load Data\Multicast.Outputs[Import exam]"
+                  deleteOutputOnPathDetached="true"
+                  name="Import exam"
+                  synchronousInputId="Package\Load Data\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
+                  refId="Package\Load Data\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Load Data\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data\Multicast.Outputs[Multicast Output 2]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Load Data\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Data\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data\Sort.Inputs[Sort Input].Columns[student_sex]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="student_sex"
+                      lineageId="Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[student_sex]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data\Sort.Inputs[Sort Input].Columns[student_code_int]"
+                      cachedDataType="i4"
+                      cachedName="student_code_int"
+                      lineageId="Package\Load Data\Data Conversion.Outputs[Data Conversion Output].Columns[student_code_int]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Error Output].Columns[student_code]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Error Output].Columns[student_code]"
-                      name="student_code" />
-                    <outputColumn
-                      refId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Error Output].Columns[student_sex]"
+                      refId="Package\Load Data\Sort.Outputs[Sort Output].Columns[student_sex]"
                       dataType="wstr"
                       length="2"
-                      lineageId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Error Output].Columns[student_sex]"
-                      name="student_sex" />
+                      lineageId="Package\Load Data\Sort.Outputs[Sort Output].Columns[student_sex]"
+                      name="student_sex">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Data\Source - exam.Outputs[OLE DB Source Output].Columns[student_sex]}</property>
+                      </properties>
+                    </outputColumn>
                     <outputColumn
-                      refId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Data\Sort.Outputs[Sort Output].Columns[student_code]"
                       dataType="i4"
-                      lineageId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
+                      lineageId="Package\Load Data\Sort.Outputs[Sort Output].Columns[student_code]"
+                      name="student_code"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Data\Data Conversion.Outputs[Data Conversion Output].Columns[student_code_int]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1428,7 +1456,7 @@ ORDER BY student_Code</property>
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        student_Code, lecture_Code, sem, semnr, probation, teacher_Code, [note], lecture_group, stud_s
 FROM            exam
-ORDER BY teacher_Code</property>
+ORDER BY student_Code</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2205,32 +2233,32 @@ ORDER BY LehrerCode</property>
           <paths>
             <path
               refId="Package\Load Data.Paths[correct]"
-              endId="Package\Load Data\exam#lecture_group null and string conversion.Inputs[Derived Column Input]"
+              endId="Package\Load Data\Multicast.Inputs[Multicast Input 1]"
               name="correct"
               startId="Package\Load Data\Filter invalid exam#marks.Outputs[correct]" />
             <path
+              refId="Package\Load Data.Paths[Data Conversion Output]"
+              endId="Package\Load Data\Sort.Inputs[Sort Input]"
+              name="Data Conversion Output"
+              startId="Package\Load Data\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
               refId="Package\Load Data.Paths[Derived Column Output]"
-              endId="Package\Load Data\lehrer_prod#duration null and string conversion.Inputs[Derived Column Input]"
-              name="Derived Column Output"
-              startId="Package\Load Data\lehrer_prod#titel_code null (unkown).Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Load Data.Paths[Derived Column Output1]"
-              endId="Package\Load Data\Destination teacher.Inputs[Destination Input]"
-              name="Derived Column Output"
-              startId="Package\Load Data\lehrer_prod#duration null and string conversion.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Load Data.Paths[Derived Column Output2]"
               endId="Package\Load Data\Destination exam.Inputs[Destination Input]"
               name="Derived Column Output"
               startId="Package\Load Data\exam#lecture_group null and string conversion.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Load Data.Paths[Derived Column Output3]"
+              refId="Package\Load Data.Paths[Derived Column Output1]"
               endId="Package\Load Data\Destination student.Inputs[Destination Input]"
               name="Derived Column Output"
               startId="Package\Load Data\student#student_sex student_group null conversion.Outputs[Derived Column Output]" />
             <path
+              refId="Package\Load Data.Paths[Derived Column Output2]"
+              endId="Package\Load Data\Destination teacher.Inputs[Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Outputs[Derived Column Output]" />
+            <path
               refId="Package\Load Data.Paths[Merge Join Output]"
-              endId="Package\Load Data\lehrer_prod#titel_code null (unkown).Inputs[Derived Column Input]"
+              endId="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown).Inputs[Derived Column Input]"
               name="Merge Join Output"
               startId="Package\Load Data\Merge Join 1.Outputs[Merge Join Output]" />
             <path
@@ -2238,6 +2266,16 @@ ORDER BY LehrerCode</property>
               endId="Package\Load Data\student#student_sex student_group null conversion.Inputs[Derived Column Input]"
               name="Merge Join Output"
               startId="Package\Load Data\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Load Data.Paths[Multicast Output 1]"
+              endId="Package\Load Data\exam#lecture_group null and string conversion.Inputs[Derived Column Input]"
+              name="Multicast Output 1"
+              startId="Package\Load Data\Multicast.Outputs[Import exam]" />
+            <path
+              refId="Package\Load Data.Paths[Multicast Output 11]"
+              endId="Package\Load Data\Data Conversion.Inputs[Data Conversion Input]"
+              name="Multicast Output 1"
+              startId="Package\Load Data\Multicast.Outputs[Multicast Output 1]" />
             <path
               refId="Package\Load Data.Paths[OLE DB Source Output]"
               endId="Package\Load Data\Filter invalid exam#marks.Inputs[Conditional Split Input]"
@@ -2259,10 +2297,10 @@ ORDER BY LehrerCode</property>
               name="OLE DB Source Output"
               startId="Package\Load Data\Source 3 - teacher_group.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Load Data.Paths[OLE DB Source Output4]"
+              refId="Package\Load Data.Paths[Sort Output]"
               endId="Package\Load Data\Merge Join.Inputs[Merge Join Left Input]"
-              name="OLE DB Source Output"
-              startId="Package\Load Data\OLE DB Source exam.Outputs[OLE DB Source Output]" />
+              name="Sort Output"
+              startId="Package\Load Data\Sort.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2396,217 +2434,183 @@ ORDER BY LehrerCode</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="199,42"
-          Id="Package\Load Data\Source 3 - teacher_group"
-          TopLeft="1116.60000040872,44.4999999999999" />
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Load Data\Destination exam"
-          TopLeft="74.1000000681196,360.111764714462" />
-        <NodeLayout
-          Size="305,42"
-          Id="Package\Load Data\lehrer_prod#duration null and string conversion"
-          TopLeft="903.125762795966,260.94314030072" />
-        <NodeLayout
-          Size="255,42"
-          Id="Package\Load Data\lehrer_prod#titel_code null (unkown)"
-          TopLeft="924.930050387476,193.06470746103" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Load Data\Destination teacher"
-          TopLeft="967.242857639156,351.794120778675" />
-        <NodeLayout
-          Size="185,42"
-          Id="Package\Load Data\Source 1 - lehrer_prod"
-          TopLeft="795.600000408718,44.5" />
-        <NodeLayout
-          Size="147,42"
-          Id="Package\Load Data\Source - exam"
-          TopLeft="78.6000004087176,38.5" />
-        <NodeLayout
-          Size="202,42"
-          Id="Package\Load Data\Source 2 - Student_Group"
-          TopLeft="549.100000408718,44.4999999999999" />
-        <NodeLayout
-          Size="201,42"
-          Id="Package\Load Data\Filter invalid exam#marks"
-          TopLeft="52.6000004087176,153" />
+          Size="139,42"
+          Id="Package\Load Data\Merge Join 1"
+          TopLeft="896,117" />
         <NodeLayout
           Size="171,42"
           Id="Package\Load Data\Destination student"
-          TopLeft="428.100000408718,470.5" />
-        <EdgeLayout
-          Id="Package\Load Data.Paths[OLE DB Source Output]"
-          TopLeft="152.600000408718,80.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,72.5"
-              Start="0,0"
-              End="0,65">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,65" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Data.Paths[Derived Column Output1]"
-          TopLeft="1053.93431021756,302.94314030072">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48.850980477955"
-              Start="0,0"
-              End="0,41.350980477955">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.350980477955" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Data.Paths[Derived Column Output]"
-          TopLeft="1054.02790659172,235.06470746103">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,25.87843283969"
-              Start="0,0"
-              End="0,18.37843283969">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.37843283969" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="425.100000408718,526.5" />
         <NodeLayout
-          Size="302,42"
-          Id="Package\Load Data\exam#lecture_group null and string conversion"
-          TopLeft="1,257" />
+          Size="202,42"
+          Id="Package\Load Data\Source 2 - Student_Group"
+          TopLeft="429.100000408718,17.4999999999999" />
+        <NodeLayout
+          Size="324,42"
+          Id="Package\Load Data\student#student_sex student_group null conversion"
+          TopLeft="352,456" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Load Data\Destination teacher"
+          TopLeft="883.242857639156,387.794120778675" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Load Data\Source - exam"
+          TopLeft="84.6000004087176,11.5" />
         <NodeLayout
           Size="130,42"
           Id="Package\Load Data\Merge Join"
-          TopLeft="449,272" />
-        <EdgeLayout
-          Id="Package\Load Data.Paths[OLE DB Source Output1]"
-          TopLeft="650.100000408718,86.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-115.766667075385,185.5"
-              Start="0,0"
-              End="-115.766667075385,178">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,105.946808510638" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,105.946808510638"
-                    Point2="0,109.946808510638"
-                    Point3="-4,109.946808510638" />
-                  <mssgle:LineSegment
-                    End="-111.766667075385,109.946808510638" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-111.766667075385,109.946808510638"
-                    Point2="-115.766667075385,109.946808510638"
-                    Point3="-115.766667075385,113.946808510638" />
-                  <mssgle:LineSegment
-                    End="-115.766667075385,178" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="449,389" />
         <NodeLayout
-          Size="139,42"
-          Id="Package\Load Data\Merge Join 1"
-          TopLeft="986,126" />
-        <EdgeLayout
-          Id="Package\Load Data.Paths[OLE DB Source Output2]"
-          TopLeft="888.100000408718,86.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="145.566666257949,39.5"
-              Start="0,0"
-              End="145.566666257949,32">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.4302987197724" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.4302987197724"
-                    Point2="0,23.4302987197724"
-                    Point3="4,23.4302987197724" />
-                  <mssgle:LineSegment
-                    End="141.566666257949,23.4302987197724" />
-                  <mssgle:CubicBezierSegment
-                    Point1="141.566666257949,23.4302987197724"
-                    Point2="145.566666257949,23.4302987197724"
-                    Point3="145.566666257949,27.4302987197724" />
-                  <mssgle:LineSegment
-                    End="145.566666257949,32" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="199,42"
+          Id="Package\Load Data\Source 3 - teacher_group"
+          TopLeft="975.60000040872,20.4999999999999" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Load Data\Source 1 - lehrer_prod"
+          TopLeft="765.600000408718,20.5" />
+        <NodeLayout
+          Size="302,42"
+          Id="Package\Load Data\exam#lecture_group null and string conversion"
+          TopLeft="1,458" />
+        <NodeLayout
+          Size="369,42"
+          Id="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown)"
+          TopLeft="777.930050387476,214.06470746103" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Load Data\Filter invalid exam#marks"
+          TopLeft="52.6000004087176,102" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Load Data\Destination exam"
+          TopLeft="65.1000000681196,525.111764714462" />
         <EdgeLayout
           Id="Package\Load Data.Paths[OLE DB Source Output3]"
-          TopLeft="1216.10000040872,86.4999999999999">
+          TopLeft="1075.10000040872,62.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-138.766667075385,39.5000000000001"
+              EndConnector="-87.7666670753866,54.5000000000001"
               Start="0,0"
-              End="-138.766667075385,32.0000000000001">
+              End="-87.7666670753866,47.0000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.4302987197725" />
+                    End="0,28.3278805120911" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.4302987197725"
-                    Point2="0,23.4302987197725"
-                    Point3="-4,23.4302987197725" />
+                    Point1="0,28.3278805120911"
+                    Point2="0,32.3278805120911"
+                    Point3="-4,32.3278805120911" />
                   <mssgle:LineSegment
-                    End="-134.766667075385,23.4302987197725" />
+                    End="-83.7666670753866,32.3278805120911" />
                   <mssgle:CubicBezierSegment
-                    Point1="-134.766667075385,23.4302987197725"
-                    Point2="-138.766667075385,23.4302987197725"
-                    Point3="-138.766667075385,27.4302987197725" />
+                    Point1="-83.7666670753866,32.3278805120911"
+                    Point2="-87.7666670753866,32.3278805120911"
+                    Point3="-87.7666670753866,36.3278805120911" />
                   <mssgle:LineSegment
-                    End="-138.766667075385,32.0000000000001" />
+                    End="-87.7666670753866,47.0000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[OLE DB Source Output2]"
+          TopLeft="858.100000408718,62.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85.5666662579487,54.5"
+              Start="0,0"
+              End="85.5666662579487,47">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.327880512091" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.327880512091"
+                    Point2="0,32.327880512091"
+                    Point3="4,32.327880512091" />
+                  <mssgle:LineSegment
+                    End="81.5666662579487,32.327880512091" />
+                  <mssgle:CubicBezierSegment
+                    Point1="81.5666662579487,32.327880512091"
+                    Point2="85.5666662579487,32.327880512091"
+                    Point3="85.5666662579487,36.327880512091" />
+                  <mssgle:LineSegment
+                    End="85.5666662579487,47" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[OLE DB Source Output1]"
+          TopLeft="532.216666871026,59.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,329.5"
+              Start="0,0"
+              End="0,322">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,322" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[OLE DB Source Output]"
+          TopLeft="155.600000408718,53.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.5"
+              Start="0,0"
+              End="0,41">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[Merge Join Output1]"
+          TopLeft="514,431">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2617,18 +2621,100 @@ ORDER BY LehrerCode</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Data.Paths[Merge Join Output]"
-          TopLeft="1053.96502519374,168">
+          TopLeft="963.965025193738,159">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,25.06470746103"
+              EndConnector="0,55.06470746103"
               Start="0,0"
-              End="0,17.56470746103">
+              End="0,47.56470746103">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.56470746103" />
+                    End="0,47.56470746103" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[Derived Column Output1]"
+          TopLeft="512.300000204359,498">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.5"
+              Start="0,0"
+              End="0,21">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[Derived Column Output]"
+          TopLeft="148.55000003406,500">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.111764714462"
+              Start="0,0"
+              End="0,17.611764714462">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.611764714462" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Load Data\Multicast"
+          TopLeft="270,154" />
+        <EdgeLayout
+          Id="Package\Load Data.Paths[Multicast Output 1]"
+          TopLeft="311.333333333333,196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-159.333333333333,262"
+              Start="0,0"
+              End="-159.333333333333,254.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,102.868421052632" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,102.868421052632"
+                    Point2="0,106.868421052632"
+                    Point3="-4,106.868421052632" />
+                  <mssgle:LineSegment
+                    End="-155.333333333333,106.868421052632" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-155.333333333333,106.868421052632"
+                    Point2="-159.333333333333,106.868421052632"
+                    Point3="-159.333333333333,110.868421052632" />
+                  <mssgle:LineSegment
+                    End="-159.333333333333,254.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2639,128 +2725,146 @@ ORDER BY LehrerCode</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Data.Paths[correct]"
-          TopLeft="152.550000204359,195">
+          TopLeft="253.600000408718,123">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,62"
+              EndConnector="76.3999995912824,31"
               Start="0,0"
-              End="0,54.5">
+              End="76.3999995912824,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,54.5" />
+                    End="72.3999995912824,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="72.3999995912824,0"
+                    Point2="76.3999995912824,0"
+                    Point3="76.3999995912824,4" />
+                  <mssgle:LineSegment
+                    End="76.3999995912824,23.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-16.07599609375,22.66357421875,32.1519921875,9.1728515625"
+              BoundingBox="60.3240034975324,-15.1728515625,32.1519921875,9.1728515625"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Load Data\Sort"
+          TopLeft="370,303" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load Data\Data Conversion"
+          TopLeft="337,230" />
+        <EdgeLayout
+          Id="Package\Load Data.Paths[Multicast Output 11]"
+          TopLeft="348.666666666667,196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66.3333333333334,34"
+              Start="0,0"
+              End="66.3333333333334,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.86842105263159" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.86842105263159"
+                    Point2="0,13.8684210526316"
+                    Point3="4,13.8684210526316" />
+                  <mssgle:LineSegment
+                    End="62.3333333333334,13.8684210526316" />
+                  <mssgle:CubicBezierSegment
+                    Point1="62.3333333333334,13.8684210526316"
+                    Point2="66.3333333333334,13.8684210526316"
+                    Point3="66.3333333333334,17.8684210526316" />
+                  <mssgle:LineSegment
+                    End="66.3333333333334,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[Data Conversion Output]"
+          TopLeft="417,272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[Sort Output]"
+          TopLeft="419,345">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.6666666666667,44"
+              Start="0,0"
+              End="74.6666666666667,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.0790273556231" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.0790273556231"
+                    Point2="0,26.0790273556231"
+                    Point3="4,26.0790273556231" />
+                  <mssgle:LineSegment
+                    End="70.6666666666667,26.0790273556231" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.6666666666667,26.0790273556231"
+                    Point2="74.6666666666667,26.0790273556231"
+                    Point3="74.6666666666667,30.0790273556231" />
+                  <mssgle:LineSegment
+                    End="74.6666666666667,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Data.Paths[Derived Column Output2]"
-          TopLeft="153.05000003406,299">
+          TopLeft="965.336454013316,256.06470746103">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,61.111764714462"
+              EndConnector="0,131.729413317645"
               Start="0,0"
-              End="0,53.611764714462">
+              End="0,124.229413317645">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.611764714462" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Load Data\OLE DB Source exam"
-          TopLeft="341,41" />
-        <NodeLayout
-          Size="324,42"
-          Id="Package\Load Data\student#student_sex student_group null conversion"
-          TopLeft="349,381" />
-        <EdgeLayout
-          Id="Package\Load Data.Paths[Merge Join Output1]"
-          TopLeft="512.5,314">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,67"
-              Start="0,0"
-              End="0,59.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,59.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Data.Paths[Derived Column Output3]"
-          TopLeft="512.300000204359,423">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47.5"
-              Start="0,0"
-              End="0,40">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Data.Paths[OLE DB Source Output4]"
-          TopLeft="430.5,83">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="63.1666666666667,189"
-              Start="0,0"
-              End="63.1666666666667,181.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,108.021276595745" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,108.021276595745"
-                    Point2="0,112.021276595745"
-                    Point3="4,112.021276595745" />
-                  <mssgle:LineSegment
-                    End="59.1666666666667,112.021276595745" />
-                  <mssgle:CubicBezierSegment
-                    Point1="59.1666666666667,112.021276595745"
-                    Point2="63.1666666666667,112.021276595745"
-                    Point3="63.1666666666667,116.021276595745" />
-                  <mssgle:LineSegment
-                    End="63.1666666666667,181.5" />
+                    End="0,124.229413317645" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2773,15 +2877,7 @@ ORDER BY LehrerCode</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Data\Source 3 - teacher_group">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Data\Destination exam">
+    design-time-name="Package\Load Data\Destination student">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2790,24 +2886,19 @@ ORDER BY LehrerCode</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data\Source 2 - Student_Group">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Data\Destination teacher">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Data\Source 1 - lehrer_prod">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2833,7 +2924,7 @@ ORDER BY LehrerCode</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Data\Source 2 - Student_Group">
+    design-time-name="Package\Load Data\Source 3 - teacher_group">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2841,7 +2932,7 @@ ORDER BY LehrerCode</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Data\Destination student">
+    design-time-name="Package\Load Data\Source 1 - lehrer_prod">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2854,7 +2945,7 @@ ORDER BY LehrerCode</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Data\OLE DB Source exam">
+    design-time-name="Package\Load Data\Destination exam">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

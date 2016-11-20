@@ -87,6 +87,12 @@
 \setlength{\headheight}{15mm}
 %\includepdf[pages={1,2}]{Uebungszettel02.pdf}
 
+\section{Introduction}
+This document is the report for the data warehouse part of the lecture \emph{DWO}. Before the \emph{SSIS} and \emph{SSAS} project can be used you need to ensure that the database with name \emph{MDE\_DWO\_WS1617} exists on your local SQL Server instance and has proper permissions set for \emph{SSAS} services user. 
+\newline
+\newline
+The source in the \emph{SSIS} project needs to be modified to point to the proper *.mdb file.
+
 % Section gramar and basics 
 \section{Integration Services}
 \label{sec:integration-services}
@@ -110,103 +116,157 @@ The following listing describes the components in the control flow:
 The yellow warn icon is caused by data type changes between the raw data and the prepared data. the data type change is caused by the change of the length of some \emph{nvarchar} typed columns.
 \newpage
 
-The image shows the implemented \emph{Data Flow} for the data preparation of the raw data of table \emph{exam} which will be represented by the table \emph{exam} in the warehouse.
+The image shows the implemented \emph{Data Flow} for the data preparation of the raw data of table \emph{exam} and \emph{student\_group} which will be represented by the tables \emph{exam} and \emph{student} in the warehouse.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.8]{\imageDir/is-data-flow-exam.JPG}
+\includegraphics[scale=0.8]{\imageDir/is-data-flow-exam-student.JPG}
 \caption{Integration Service Data Flow for \emph{exam}}
 \label{fig:is-data-flow-exam}
 \end{figure}
 \ \newline
-The following listing describes the used \emph{Data Flow} components for data preparation of the table \emph{exam}.
-\begin{itemize}
-	\item \emph{Source - exam} is a source component and connects to the table \emph{exam} of the raw data.
-	\item \emph{Filter invalid exam\# marks} is the \emph{Conditional Split} component which filters the data for valid and invalid marks.
-	\item \emph{exam\# lecture\_group null and string conversion} is the \emph{Derived Column} component which transforms the following transformations
-	\begin{itemize}
-		\item Create the new column \emph{lecture\_group\_str} on stream of type \emph{DT\_WSTR, 10)}
-		\item Set the value by the following expression 
-		\newline
-		$!ISNULL(lecture\_group) ? (''Group '' + (DT\_WSTR,10)lecture\_group) : ''unknown''$
-	\end{itemize}
-	\item \emph{Destination exam} is the \emph{OLE DB Destination} component which stores the prepared raw data in the destination table \emph{exam}.
-\end{itemize}
-\ \newline
-The yellow warn icon is caused the change of the data type of the column \emph{student\_sex} from \emph{nvarchar(2)} to \emph{nchar(1)}
+The exam input stream gets duplicated for the \emph{student} stream because there are some students in the \emph{exam} table which are not present in the \emph{student\_group} table, therefore the missing students need to be captured from the cleaned up \emph{exam} stream. There are also some students in the \emph{student\_group} table, which have no exam entries, but they are considered to be worthless for the further analysis. The \emph{student\_code} column gets interpreted as a \emph{DT\_WSTR} and in the \emph{student} stream as a \emph{four-byte-signed-integer}. Therefore a cast was necessary to get the proper type for the \emph{Merg Join} component. 
+\newline
+\newline
+The yellow warn icon is caused by some data type changes of some columns. For instance \emph{student\_sex} was changed from \emph{nvarchar(2)} to \emph{nchar(1)}.
+\newline
+\newline
+The result are the two tables \emph{exam} and \emph{student} where the \emph{student} table will only contain students which have \emph{exam} entries. Students not present in the \emph{student\_group} table before, will get the \emph{student\_group} set to \emph{U} which stands for unknown. The exam table was cleaned of the attribute \emph{student\_sex} which is part of the table \emph{student}.
 \newpage
 
-The image shows the implemented \emph{Data Flow} for the data preparation of the raw data of table \emph{lehrer\_prod} which will be represented by the table \emph{teacher} in the warehouse.
+The image shows the implemented \emph{Data Flow} for the data preparation of the raw data of table \emph{lehrer\_prod} and \emph{teacher\_group} which will be represented by the tables \emph{teacher} in the warehouse.
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{\imageDir/is-data-flow-teacher.JPG}
-\caption{Integration Service Data Flow for \emph{lehrer\_prod}}
+\caption{Integration Service Data Flow for \emph{lehrer\_prod} and \emph{teacher\_group}}
 \label{fig:is-data-flow-teacher}
 \end{figure}
 \ \newline
-The following listing describes the used \emph{Data Flow} components for data preparation of the table \emph{teacher}.
-\begin{itemize}
-	\item \emph{Source - lehrer\_prod} is a source component and connects to the table \emph{lehrer\_prod} of the raw data.
-	\item \emph{lehrer\_prod\# duration null and string conversion} is the \emph{Derived Column} component which transforms the following transformations
-	\begin{itemize}
-		\item Create the new column \emph{duration\_str} on stream of type \emph{DT\_WSTR, 10)}
-		\item Set the value by the following expression 
-		\newline
-		$!ISNULL(duration) ? ''Duration '' + (DT\_WSTR,10)duration : ''unknown''$
-	\end{itemize}
-	\item \emph{Destination teacher} is the \emph{OLE DB Destination} component which stores the prepared raw data in the destination table \emph{teacher}.
-\end{itemize}
-\ \newline
-The yellow warn icon is caused the change of the data type of the column \emph{sex} from \emph{nvarchar(255)} to \emph{nchar(1)}
-
-\newpage
-
-The image shows the implemented \emph{Data Flow} for the data preparation of the raw data of table \emph{teacher\_group} which will be represented by the table \emph{teacher\_group} in the warehouse.
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.8]{\imageDir/is-data-flow-teacher-group.JPG}
-\caption{Integration Service Data Flow for \emph{teacher\_group}}
-\label{fig:is-data-flow-teacher}
-\end{figure}
-\ \newline
-The following listing describes the used \emph{Data Flow} components for data preparation of the table \emph{teacher\_group}.
-\begin{itemize}
-	\item \emph{Source - teacher\_group} is a source component and connects to the table \emph{teacher\_group} of the raw data.
-	\item \emph{teacher\_group\# typ null conversion} is the \emph{Derived Column} component which transforms the following transformations
-	\begin{itemize}
-		\item Set the value by the following expression 
-		\newline
-		$REPLACENULL(typ,''unknown'')$
-	\end{itemize}
-	\item \emph{Destination teacher\_group} is the \emph{OLE DB Destination} component which stores the prepared raw data in the destination table \emph{teacher\_group}.
-\end{itemize}
-\ \newline
-This tables holds no null values and therefore are no other transformation necessary.
-
-\newpage
-
-The image shows the implemented \emph{Data Flow} for the data preparation of the raw data of table \emph{student\_group} which will be represented by the table \emph{student\_group} in the warehouse.
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.8]{\imageDir/is-data-flow-student-group.JPG}
-\caption{Integration Service Data Flow for \emph{student\_group}}
-\label{fig:is-data-flow-teacher}
-\end{figure}
-\ \newline
-The following listing describes the used \emph{Data Flow} components for data preparation of the table \emph{student\_group}.
-\begin{itemize}
-	\item \emph{Source - student\_group} is a source component and connects to the table \emph{student\_group} of the raw data.
-	\item \emph{Destination student\_group} is the \emph{OLE DB Destination} component which stores the prepared raw data in the destination table \emph{student\_group}.
-\end{itemize}
-\ \newline
-This table doesn't require any transformation of the data.
+The \emph{teacher\_group} and \emph{lehrer\_prod} tables get merged to the \emph{teacher} table. If teachers are missing in the \emph{teacher\_group} table or the \emph{typ} column in the \emph{teacher\_group} table is null, then they get assigned to the group \emph{unknown}. The duration gets converted to a string of the form \emph{Duration 1} or to \emph{unknown} if no duration is present.
+\newline
+\newline
+The yellow warn icon is caused by some data type changes of some columns. For instance \emph{teacher\_sex} was changed from \emph{nvarchar(2)} to \emph{nchar(1)}.
+\newline
+\newline
+The result is the table \emph{teacher} which holds all teachers present in the \emph{exam} table with all their attributes.
 
 \newpage
 
 \section{Analysis Services}
-This section deals with the \emph{SSAS Analysis Services} part of the hands on.
+This section deals with the \emph{SSAS Analysis Services} part of the hands on. 
+
+\subsection{Implemented Project}
+This section deals with the implemented project for the analysis part of the hands on.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{\imageDir/as-data-source-view.JPG}
+\caption{Data source view of the warehouse database}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+\ \newline
+The tables \emph{workload}, \emph{probation}, \emph{course} and \emph{semester} were create as named queries.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{\imageDir/as-cube.JPG}
+\caption{Implemented cube}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+\ \newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{\imageDir/as-measures-dimensions.JPG}
+\caption{Cube measures and dimensions}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{\imageDir/as-calculated-member.JPG}
+\caption{Cube measures and dimensions}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+\ \newpage
+
+\subsection{Reports}
+The following images are showing the result of the made reports based on the implemented cube.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.9]{\imageDir/report-teacher-seniority.JPG}
+\caption{Report Teachers seniority}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{\imageDir/report-course-type.JPG}
+\caption{Report Course type}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+\ \newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{\imageDir/report-teacher-title.JPG}
+\caption{Report Teacher job title}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+\ \newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{\imageDir/report-teacher-sex.JPG}
+\caption{Report Teacher sex}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{\imageDir/report-probation.JPG}
+\caption{Report Probation}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{\imageDir/report-teacher-code.JPG}
+\caption{Report teacher code (truncated)}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+\ \newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{\imageDir/report-over-time.JPG}
+\caption{Report over time (semesters)}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{\imageDir/report-student-to-student-group.JPG}
+\caption{Report student and student group}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+\ \newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{\imageDir/report-workload.JPG}
+\caption{Report workload over semesters}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{\imageDir/report-teacher-to-student-sex.JPG}
+\caption{Report teacher and student sex}
+\label{fig:is-data-flow-teacher}
+\end{figure}
+\ \newpage
 
 \end{document}

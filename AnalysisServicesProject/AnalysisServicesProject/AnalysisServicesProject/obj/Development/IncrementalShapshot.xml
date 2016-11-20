@@ -26,7 +26,7 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.DataSourceView</Type>
-        <TimeStamp>DEryB4uCNK5q1vw9chP6ReRN/1E=11/19/16 7:57:16 PM11/19/16 9:32:40 AM</TimeStamp>
+        <TimeStamp>JGSO/ios2ZDv8Z4ttezyEQjD928=11/20/16 1:03:57 PM11/19/16 9:32:40 AM</TimeStamp>
         <ID>
           <String>MDE DWO WS1617</String>
         </ID>
@@ -54,7 +54,7 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>Fi1MtWu/O9r4yzrTkP2oPQ/xRbg=11/19/16 6:52:59 PM11/19/16 5:05:38 PM</TimeStamp>
+        <TimeStamp>6Q1HE11Lg9Rw+T9yiUzF6wAI9R8=11/20/16 1:30:51 PM11/19/16 5:05:38 PM</TimeStamp>
         <ID>
           <String>Workload</String>
         </ID>
@@ -75,7 +75,7 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Cube</Type>
-        <TimeStamp>5WYALA1zTUlj4GcFrn3/W7xkKo4=11/19/16 8:03:45 PM11/19/16 6:50:20 PMvSkF41HGNBbTBUrj5KV7u0qMfjk=11/19/16 6:50:20 PM11/19/16 6:50:20 PM</TimeStamp>
+        <TimeStamp>dfkDfJuhrH3SznfnRgE8TSxqodw=11/20/16 1:09:55 PM11/19/16 6:50:20 PMvSkF41HGNBbTBUrj5KV7u0qMfjk=11/20/16 1:09:55 PM11/19/16 6:50:20 PM</TimeStamp>
         <ID>
           <String>CUBE</String>
         </ID>
@@ -92,5 +92,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2016-11-19T19:05:10.046667Z</LastDeployed>
+  <LastDeployed>2016-11-20T12:30:53.133333Z</LastDeployed>
 </DeploymentSnapshot>
