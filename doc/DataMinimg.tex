@@ -143,12 +143,9 @@ This flow prepares the data for the later analysis. The following tasks are perf
 \caption{Flow of further data preparation}
 \end{figure}
 \ \newline
-This part of the stream prepares the data in the following way:
-\begin{itemize}
-	\item The node \emph{Partition} splits the data in a training and testing data.
-	\item The node \emph{Distribution} shows us that the field \emph{quality\_bool} is very bad distributed. \emph{(False=2.24, True=97.76)}
-	\item 
-\end{itemize}
+This part of the stream prepares the data by splitting it into test and training data, additionally the \emph{False} \emph{qualtity\_bool} will be boost to increase their representation in the data. At last the data gets prepared on the one hand with a \emph{Feature Selection} and on the other hand with a \emph{PAC Factor}.
+\newline
+\newline
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{\imageDir/dm-spss-distribution-quality-bool.JPG}
@@ -171,50 +168,87 @@ The node \emph{Field selection} has reduced the count of fields from \emph{15} d
 \newline
 \newline
 
-\subsubsection{Not partitioned data to feature selection and boost}
+\subsubsection{What are results of the use of \emph{Feature Selection} and \emph{PCA Factor} with defaults ? }
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.55]{\imageDir/dm-spss-c50-unpart-to-unmod.JPG}
-\caption{C5.0 with no partitioned and partitioned data}
+\includegraphics[scale=0.55]{\imageDir/dm-spss-pca-feature-c50}
+\caption{C5.0 with \emph{Feature Selection} compared to \emph{PAC}}
 \end{figure}
 \ \newpage
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.55]{\imageDir/dm-spss-nnet-unpart-to-unmod.JPG}
-\caption{Neuronal Net with no partitioned and partitioned data}
+\includegraphics[scale=0.55]{\imageDir/dm-spss-pca-feature-nnet.JPG}
+\caption{Neuronal Net with \emph{Feature Selection} compared to \emph{PAC}}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.55]{\imageDir/dm-spss-logreg-unpart-to-unmod.JPG}
-\caption{Logistic Regression with no partitioned and partitioned data}
-\end{figure}
-\ \newpage
-
-\subsubsection{Feature selection to PCA}
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.55]{\imageDir/dm-spss-c50-feature-to-pca.JPG}
-\caption{C5.0 feature selection to PCA}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.55]{\imageDir/dm-spss-nnet-feature-to-pcs.JPG}
-\caption{Neuronal Net feature selection to PCA}
+\includegraphics[scale=0.55]{\imageDir/dm-spss-pca-feature-logreg.JPG}
+\caption{Logistic Regression with \emph{Feature Selection} compared to \emph{PAC}}
 \end{figure}
 \ \newpage
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.55]{\imageDir/dm-spss-nnet-feature-to-pcs.JPG}
-\caption{Logistic Regression feature selection to PCA}
+\includegraphics[scale=1]{\imageDir/dm-spss-pca-feature-bar-chart.JPG}
+\caption{The chart shows the results of the comparison between \emph{Feature Selection} and \emph{PAC} }
 \end{figure}
 
-\subsubsection{Fine tuning of PCA part}
+\subsubsection{What are results when C5.0 is modified ? }
 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.55]{\imageDir/dm-spss-pca-feature-c50-cost-10.JPG}
+\caption{C5.0 (costs for TF=10) with \emph{Feature Selection} compared to \emph{PAC}}
+\end{figure}
+\ \newpage
 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.55]{\imageDir/dm-spss-pca-feature-c50-cost-10-prune-10.JPG}
+\caption{C5.0 (costs for TF=10, prun serv=10) with \emph{Feature Selection} compared to \emph{PAC}}
+\end{figure}
+
+\subsubsection{What are results when the Neural Net is modified ? }
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{\imageDir/dm-spss-pca-feature-nnet-config1_1.JPG}
+\caption{Part one of Neural Net settings}
+\end{figure}
+\ \newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{\imageDir/dm-spss-pca-feature-nnet-config1_2.JPG}
+\caption{Part two of Neural Net settings}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.55]{\imageDir/dm-spss-pca-feature-nnet-for-config.JPG}
+\caption{Neural Net with \emph{Feature Selection} compared to \emph{PAC}}
+\end{figure}
+\ \newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{\imageDir/dm-spss-pca-feature-logreg-config.JPG}
+\caption{Logistic Regression Settings}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.55]{\imageDir/dm-spss-pca-feature-logreg-for-config.JPG}
+\caption{Logistic regression with \emph{Feature Selection} compared to \emph{PAC}}
+\end{figure}
+\ \newline
+
+\begin{figure}
+\centering
+\includegraphics[scale=1]{\imageDir/dm-spss-pca-feature-result-all.JPG}
+\caption{All results of the experiments in a table}
+\end{figure}
 
 
 \end{document}
