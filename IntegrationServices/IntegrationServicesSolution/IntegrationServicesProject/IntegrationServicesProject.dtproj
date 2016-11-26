@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">SERVER2012</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAe/G3ND8oCkqCKs7hzlFjSAAAAAACAAAAAAAQZgAAAAEAACAAAACwWubSxuIJ/WOUOruSELQ2pKYKLwZNS71El9uvASNEzgAAAAAOgAAAAAIAACAAAAAg5ePm2iLRszxPl5UlmgSOeeVm+fCmYCqesbRsKzjSBJAAAAA4xDsumJUpJ3Oy0lWLKQFdk2s0G2U81XsPtFWOqOhi5bpblTkZRFJrItUQKowU6ZeTYpj23hnsVuXg+9aUc4toosFBA0LgvAL+ZaVXXnpw6ye6g+QU9A9w/ZOu5l9Ht2r++pAUdn1qPJ+apo3N5n+NWHDQ4RmHpGntSjDelF7Ej3pVaqvsuSPvDBXr0lhQ92NAAAAArNNQwm3fY2QO4lRf9BMoJUbi8QHJf82/n79K7ffvcF6FUd2aL1Q7ibaPK0QvoHA4D1TFH0LkwYA0RKIKP8NJNg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAkxCHiwxx5EGfvsjrySHdVwAAAAACAAAAAAAQZgAAAAEAACAAAACNyXs9PIBTFUCr1Z0S4mhhPs/nrsmRoKyPx8Djhi4YigAAAAAOgAAAAAIAACAAAAAboZ/Z9wNoQ3ycdFsD5ynSkqmmV1UFX2CQbg0+Atl6gZAAAABUEBweWCkhZ7X2o1J0CzEaTiYQsFOVLNCbEfp+a3e3Hw2v0HaoOuKQNJtlfYliq7679Bz7RnDWppLZncmRx3KDRrnMkkshY5BbmvlAUIZpXeP0ilPF4dQg+Pp9SwiIBE7dGq82fVGOJUNKD3sgBulO4rA/IYVs9CdHwNWhIQL9V5RWXBFRaN685f5CBKIS7vlAAAAA68JvCjyWIX3SUg1Cy4fmW1bHf6B8APn6EtCr08XMGYUus8I+urop6EQgkyyFuQwEP1KPZ00jqTigrCUX1QyHDw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -42,10 +42,10 @@
                 <SSIS:Property SSIS:Name="Name">ETL</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">65</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">150</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AF141C3D-6800-4BFF-97EE-99F9EFCCC4AE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3E68D937-2E6D-4A93-B161-6635EDAD2474}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">DTS Wizard-generated package</SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
@@ -150,7 +150,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=D:\repositories\Github\FH-SE-Master\DataWarehouse-and-OLAP\fhhnotes.mdb;Provider=Microsoft.Jet.OLEDB.4.0;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=X:\1.Semester\DW01ILV\ue\dw\fhhnotes.mdb;Provider=Microsoft.Jet.OLEDB.4.0;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -208,7 +208,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">D:\repositories\Github\FH-SE-Master\DataWarehouse-and-OLAP\fhhnotes.mdb</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">X:\1.Semester\DW01ILV\ue\dw\fhhnotes.mdb</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>

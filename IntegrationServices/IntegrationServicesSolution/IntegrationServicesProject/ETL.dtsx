@@ -8,12 +8,12 @@
   DTS:Description="DTS Wizard-generated package"
   DTS:DTSID="{FE6AB6E6-8318-44A0-A250-85E2130FDA03}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LastModifiedProductVersion="13.0.2164.0"
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ETL"
-  DTS:VersionBuild="149"
-  DTS:VersionGUID="{F312732E-C83F-4065-BDCF-68E4BD3F9967}">
+  DTS:VersionBuild="150"
+  DTS:VersionGUID="{3E68D937-2E6D-4A93-B161-6635EDAD2474}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -34,7 +34,7 @@
       DTS:ObjectName="SourceConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=D:\repositories\Github\FH-SE-Master\DataWarehouse-and-OLAP\fhhnotes.mdb;Provider=Microsoft.Jet.OLEDB.4.0;" />
+          DTS:ConnectionString="Data Source=X:\1.Semester\DW01ILV\ue\dw\fhhnotes.mdb;Provider=Microsoft.Jet.OLEDB.4.0;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -2337,11 +2337,11 @@ ORDER BY LehrerCode</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="144,42"
+          Size="144,41.6"
           Id="Package\Database Preparation Sequence\Create Tables"
           TopLeft="33.5,130.5" />
         <NodeLayout
-          Size="153,42"
+          Size="152.8,41.6"
           Id="Package\Database Preparation Sequence\Drop old Tables"
           TopLeft="29,33" />
         <EdgeLayout
@@ -2369,16 +2369,16 @@ ORDER BY LehrerCode</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="273,248"
-          Size="273,291"
+          PanelSize="272.8,248"
+          Size="272.8,291.2"
           Id="Package\Database Preparation Sequence"
           TopLeft="80,103" />
         <NodeLayout
-          Size="145,42"
+          Size="144.8,41.6"
           Id="Package\Drop old Data"
           TopLeft="138,466" />
         <NodeLayout
-          Size="127,42"
+          Size="127.2,41.6"
           Id="Package\Load Data"
           TopLeft="147.5,562.5" />
         <EdgeLayout
@@ -2434,91 +2434,69 @@ ORDER BY LehrerCode</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="139,42"
-          Id="Package\Load Data\Merge Join 1"
-          TopLeft="896,117" />
+          Size="97.6,41.6"
+          Id="Package\Load Data\Sort"
+          TopLeft="370,303" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\Load Data\Destination student"
-          TopLeft="425.100000408718,526.5" />
-        <NodeLayout
-          Size="202,42"
-          Id="Package\Load Data\Source 2 - Student_Group"
-          TopLeft="429.100000408718,17.4999999999999" />
-        <NodeLayout
-          Size="324,42"
-          Id="Package\Load Data\student#student_sex student_group null conversion"
-          TopLeft="352,456" />
-        <NodeLayout
-          Size="170,42"
+          Size="169.6,41.6"
           Id="Package\Load Data\Destination teacher"
           TopLeft="883.242857639156,387.794120778675" />
         <NodeLayout
-          Size="147,42"
-          Id="Package\Load Data\Source - exam"
-          TopLeft="84.6000004087176,11.5" />
+          Size="120,41.6"
+          Id="Package\Load Data\Multicast"
+          TopLeft="270,154" />
         <NodeLayout
-          Size="130,42"
-          Id="Package\Load Data\Merge Join"
-          TopLeft="449,389" />
-        <NodeLayout
-          Size="199,42"
+          Size="199.2,41.6"
           Id="Package\Load Data\Source 3 - teacher_group"
           TopLeft="975.60000040872,20.4999999999999" />
         <NodeLayout
-          Size="185,42"
-          Id="Package\Load Data\Source 1 - lehrer_prod"
-          TopLeft="765.600000408718,20.5" />
+          Size="324,41.6"
+          Id="Package\Load Data\student#student_sex student_group null conversion"
+          TopLeft="352,456" />
         <NodeLayout
-          Size="302,42"
+          Size="129.6,41.6"
+          Id="Package\Load Data\Merge Join"
+          TopLeft="449,389" />
+        <NodeLayout
+          Size="302.4,41.6"
           Id="Package\Load Data\exam#lecture_group null and string conversion"
           TopLeft="1,458" />
         <NodeLayout
-          Size="369,42"
-          Id="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown)"
-          TopLeft="777.930050387476,214.06470746103" />
+          Size="184.8,41.6"
+          Id="Package\Load Data\Source 1 - lehrer_prod"
+          TopLeft="765.600000408718,20.5" />
         <NodeLayout
-          Size="201,42"
+          Size="200.8,41.6"
           Id="Package\Load Data\Filter invalid exam#marks"
           TopLeft="52.6000004087176,102" />
         <NodeLayout
-          Size="160,42"
+          Size="160,41.6"
           Id="Package\Load Data\Destination exam"
           TopLeft="65.1000000681196,525.111764714462" />
-        <EdgeLayout
-          Id="Package\Load Data.Paths[OLE DB Source Output3]"
-          TopLeft="1075.10000040872,62.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-87.7666670753866,54.5000000000001"
-              Start="0,0"
-              End="-87.7666670753866,47.0000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.3278805120911" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28.3278805120911"
-                    Point2="0,32.3278805120911"
-                    Point3="-4,32.3278805120911" />
-                  <mssgle:LineSegment
-                    End="-83.7666670753866,32.3278805120911" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-83.7666670753866,32.3278805120911"
-                    Point2="-87.7666670753866,32.3278805120911"
-                    Point3="-87.7666670753866,36.3278805120911" />
-                  <mssgle:LineSegment
-                    End="-87.7666670753866,47.0000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Load Data\Destination student"
+          TopLeft="425.100000408718,526.5" />
+        <NodeLayout
+          Size="201.6,41.6"
+          Id="Package\Load Data\Source 2 - Student_Group"
+          TopLeft="429.100000408718,17.4999999999999" />
+        <NodeLayout
+          Size="368.8,41.6"
+          Id="Package\Load Data\lehrer_prod#titel_code teacher_group duration null (unkown)"
+          TopLeft="777.930050387476,214.06470746103" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\Load Data\Merge Join 1"
+          TopLeft="896,117" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Load Data\Data Conversion"
+          TopLeft="337,230" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Load Data\Source - exam"
+          TopLeft="84.6000004087176,11.5" />
         <EdgeLayout
           Id="Package\Load Data.Paths[OLE DB Source Output2]"
           TopLeft="858.100000408718,62.5">
@@ -2598,6 +2576,74 @@ ORDER BY LehrerCode</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Load Data.Paths[Multicast Output 11]"
+          TopLeft="348.666666666667,196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66.3333333333334,34"
+              Start="0,0"
+              End="66.3333333333334,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.86842105263159" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.86842105263159"
+                    Point2="0,13.8684210526316"
+                    Point3="4,13.8684210526316" />
+                  <mssgle:LineSegment
+                    End="62.3333333333334,13.8684210526316" />
+                  <mssgle:CubicBezierSegment
+                    Point1="62.3333333333334,13.8684210526316"
+                    Point2="66.3333333333334,13.8684210526316"
+                    Point3="66.3333333333334,17.8684210526316" />
+                  <mssgle:LineSegment
+                    End="66.3333333333334,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[Multicast Output 1]"
+          TopLeft="311.333333333333,196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-159.333333333333,262"
+              Start="0,0"
+              End="-159.333333333333,254.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,102.868421052632" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,102.868421052632"
+                    Point2="0,106.868421052632"
+                    Point3="-4,106.868421052632" />
+                  <mssgle:LineSegment
+                    End="-155.333333333333,106.868421052632" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-155.333333333333,106.868421052632"
+                    Point2="-159.333333333333,106.868421052632"
+                    Point3="-159.333333333333,110.868421052632" />
+                  <mssgle:LineSegment
+                    End="-159.333333333333,254.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Load Data.Paths[Merge Join Output1]"
           TopLeft="514,431">
           <EdgeLayout.Curve>
@@ -2633,6 +2679,28 @@ ORDER BY LehrerCode</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,47.56470746103" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data.Paths[Derived Column Output2]"
+          TopLeft="965.336454013316,256.06470746103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,131.729413317645"
+              Start="0,0"
+              End="0,124.229413317645">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,124.229413317645" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2685,36 +2753,20 @@ ORDER BY LehrerCode</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="120,42"
-          Id="Package\Load Data\Multicast"
-          TopLeft="270,154" />
         <EdgeLayout
-          Id="Package\Load Data.Paths[Multicast Output 1]"
-          TopLeft="311.333333333333,196">
+          Id="Package\Load Data.Paths[Data Conversion Output]"
+          TopLeft="417,272">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-159.333333333333,262"
+              EndConnector="0,31"
               Start="0,0"
-              End="-159.333333333333,254.5">
+              End="0,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,102.868421052632" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,102.868421052632"
-                    Point2="0,106.868421052632"
-                    Point3="-4,106.868421052632" />
-                  <mssgle:LineSegment
-                    End="-155.333333333333,106.868421052632" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-155.333333333333,106.868421052632"
-                    Point2="-159.333333333333,106.868421052632"
-                    Point3="-159.333333333333,110.868421052632" />
-                  <mssgle:LineSegment
-                    End="-159.333333333333,254.5" />
+                    End="0,23.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2753,70 +2805,6 @@ ORDER BY LehrerCode</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="98,42"
-          Id="Package\Load Data\Sort"
-          TopLeft="370,303" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Load Data\Data Conversion"
-          TopLeft="337,230" />
-        <EdgeLayout
-          Id="Package\Load Data.Paths[Multicast Output 11]"
-          TopLeft="348.666666666667,196">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="66.3333333333334,34"
-              Start="0,0"
-              End="66.3333333333334,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,9.86842105263159" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.86842105263159"
-                    Point2="0,13.8684210526316"
-                    Point3="4,13.8684210526316" />
-                  <mssgle:LineSegment
-                    End="62.3333333333334,13.8684210526316" />
-                  <mssgle:CubicBezierSegment
-                    Point1="62.3333333333334,13.8684210526316"
-                    Point2="66.3333333333334,13.8684210526316"
-                    Point3="66.3333333333334,17.8684210526316" />
-                  <mssgle:LineSegment
-                    End="66.3333333333334,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Data.Paths[Data Conversion Output]"
-          TopLeft="417,272">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31"
-              Start="0,0"
-              End="0,23.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Data.Paths[Sort Output]"
           TopLeft="419,345">
@@ -2852,19 +2840,31 @@ ORDER BY LehrerCode</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Data.Paths[Derived Column Output2]"
-          TopLeft="965.336454013316,256.06470746103">
+          Id="Package\Load Data.Paths[OLE DB Source Output3]"
+          TopLeft="1075.10000040872,62.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,131.729413317645"
+              EndConnector="-87.7666670753866,54.5000000000001"
               Start="0,0"
-              End="0,124.229413317645">
+              End="-87.7666670753866,47.0000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,124.229413317645" />
+                    End="0,28.3278805120911" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.3278805120911"
+                    Point2="0,32.3278805120911"
+                    Point3="-4,32.3278805120911" />
+                  <mssgle:LineSegment
+                    End="-83.7666670753866,32.3278805120911" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-83.7666670753866,32.3278805120911"
+                    Point2="-87.7666670753866,32.3278805120911"
+                    Point3="-87.7666670753866,36.3278805120911" />
+                  <mssgle:LineSegment
+                    End="-87.7666670753866,47.0000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2877,41 +2877,7 @@ ORDER BY LehrerCode</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Data\Destination student">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Data\Source 2 - Student_Group">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load Data\Destination teacher">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Data\Source - exam">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2946,6 +2912,40 @@ ORDER BY LehrerCode</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Data\Destination exam">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data\Destination student">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data\Source 2 - Student_Group">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data\Source - exam">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

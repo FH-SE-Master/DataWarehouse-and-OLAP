@@ -4,7 +4,7 @@
     <Configuration>
       <Name>Development</Name>
       <Options>
-        <ServerName />
+        <ServerName>HERZOG-SURFACE</ServerName>
         <PathOnServer />
         <StartObjectID>ETL.dtsx</StartObjectID>
         <Run64BitRuntime>true</Run64BitRuntime>
